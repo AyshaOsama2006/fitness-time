@@ -17,6 +17,10 @@ body::before {
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.75);
+
+  /* ✅ الحل */
+  z-index: -1;
+  pointer-events: none;
 }
 
 .login-wrapper {
@@ -62,6 +66,9 @@ body::before {
 }
 
 .form-label {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
   color: #fff9f9;
   font-weight: bold;
   font-size: 15px;
@@ -124,14 +131,4 @@ body::before {
 .switch-text a:hover {
   text-decoration: underline;
   color: #8a1c1c;
-}
-
-
-.form-label {
-  display: block;       
-  text-align: left;     
-  margin-bottom: 5px;   
-  color: #fff9f9;
-  font-weight: bold;
-  font-size: 15px;
 }
