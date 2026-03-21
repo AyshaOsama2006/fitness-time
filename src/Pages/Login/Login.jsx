@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./Login.css";
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Login() {
   const [showSignup, setShowSignup] = useState(false);

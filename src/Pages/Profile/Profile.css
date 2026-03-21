@@ -1,0 +1,61 @@
+
+.card {
+    background-color: rgb(28, 28, 28) !important; 
+    border: none;
+    border-radius: 20px;
+}
+
+.list-group-item {
+    background-color: rgb(28, 28, 28) !important;
+    border-bottom: 2px solid rgb(59, 59, 59);
+    color: white !important; 
+}
+.btn {
+    color: aliceblue;
+}
+
+.card img {
+    object-fit: cover;
+}
+
+.card:hover, .btn:hover, .card4:hover {
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+    transform: translateY(-3px);
+    border-color: #131010;
+}
+
+
+img {
+    -webkit-box-shadow: 5px 5px 15px 5px #502727;
+    box-shadow: 5px 5px 15px 5px #491717;
+}
+
+.month-box {
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.month-box:hover {
+    transform: translateY(-5px) scale(1.03);
+}
+
+.month-box.red:hover {
+    background-color: rgba(220, 53, 69, 0.1);
+    border-color: #dc3545 !important;
+}
+
+.month-box.green:hover {
+    background-color: rgba(25, 135, 84, 0.1);
+    border-color: #198754 !important;
+}
+
+.month-box.blue:hover {
+    background-color: rgba(13, 110, 253, 0.1);
+    border-color: #0d6efd !important;
+}
+
+.month-box.yellow:hover {
+    background-color: rgba(255, 193, 7, 0.1);
+    border-color: #ffc107 !important;
+}
+
