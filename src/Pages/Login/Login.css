@@ -5,7 +5,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438") center/cover no-repeat;
+ background: url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438") center/cover no-repeat;
   position: relative;
 }
 
