@@ -1,0 +1,117 @@
+   .fitness-navbar {
+          background-color: #0a0a0a;
+          border-bottom: 1px solid #b91c1c;
+          padding: 18px 1.5rem;
+        }
+ 
+        .fitness-navbar .container-fluid {
+          display: flex;
+          align-items: center;
+          position: relative;
+        }
+ 
+ 
+        .fitness-center-nav {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          align-items: center;
+          gap: 2.25rem;
+        }
+ 
+        .fitness-brand {
+          color: #ef4444 !important;
+          font-weight: 800;
+          font-size: 1.4rem;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          letter-spacing: 0.5px;
+          flex-shrink: 0;
+        }
+ 
+        .fitness-brand i {
+          font-size: 1.3rem;
+          transform: rotate(-30deg);
+          display: inline-block;
+        }
+ 
+        .fitness-nav-link {
+          color: #d1d5db !important;
+          text-decoration: none;
+          font-size: 16px;
+          font-weight: 500;
+          padding: 13px 0.85rem;
+          border-radius: 6px;
+          display: flex;
+          align-items: center;
+          gap: 0.35rem;
+          transition: color 0.2s ease, background 0.2s ease;
+          white-space: nowrap;
+        }
+ 
+        .fitness-nav-link:hover {
+          color: #ffffff !important;
+          background-color: rgba(255, 255, 255, 0.06);
+        }
+ 
+        .fitness-nav-link.active-link {
+          background-color: #ef4444;
+          color: #ffffff !important;
+          border-radius: 8px;
+        }
+ 
+        .fitness-nav-link.active-link:hover {
+          background-color: #dc2626;
+        }
+ 
+        .fitness-nav-link i {
+          font-size: 1rem;
+        }
+ 
+        .logout-link {
+          color: #d1d5db !important;
+          text-decoration: none;
+          font-size: 0.88rem;
+          font-weight: 500;
+          padding: 0.45rem 0.85rem;
+          border-radius: 6px;
+          display: flex;
+          align-items: center;
+          gap: 0.35rem;
+          transition: color 0.2s ease;
+          white-space: nowrap;
+          flex-shrink: 0;
+          margin-left: auto;
+        }
+ 
+        .logout-link:hover {
+          color: #ef4444 !important;
+        }
+ 
+
+        @media (max-width: 991px) {
+          .fitness-center-nav {
+            position: static;
+            transform: none;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            display: none;
+            padding: 0.5rem 0;
+          }
+          .fitness-center-nav.open {
+            display: flex;
+          }
+          .logout-mobile { display: flex; padding: 0.5rem 0; }
+          .logout-desktop { display: none !important; }
+          .mobile-toggler { display: block; margin-left: auto; }
+        }
+ 
+        @media (min-width: 992px) {
+          .fitness-center-nav { display: flex !important; }
+          .logout-mobile { display: none; }
+          .mobile-toggler { display: none; }
+        }
