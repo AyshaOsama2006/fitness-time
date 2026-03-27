@@ -1,0 +1,50 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-primary: #050505;
+  --bg-secondary: #0D0D0D;
+  --bg-card: #141414;
+  --accent: #E53935;
+  --accent-hover: #FF5252;
+  --text-primary: #FFFFFF;
+  --text-secondary: #A3A3A3;
+  --border-color: #2A2A2A;
+}
+
+/* ✅ هذا هو الإصلاح الحقيقي */
+body {
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: var(--bg-primary); /* بدون صورة */
+  color: var(--text-primary);
+  overflow-x: hidden;
+
+  /* ❌ حذفنا flex لأنه كان يخرب كل الصفحات */
+  /* ❌ حذفنا height 100vh */
+  /* ❌ حذفنا background image */
+}
+
+/* ❌ حذفنا overlay بالكامل لأنه كان يغطي الصفحة */
+body::before {
+  display: none;
+}
+
+/* Bootstrap Overrides */
+.bg-dark { background-color: var(--bg-primary) !important; }
+.text-accent { color: var(--accent); }
+.btn-danger { background: var(--accent); border: none; }
+.btn-danger:hover { background: var(--accent-hover); }
+
+.form-control {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: white;
+}
+
+.form-control:focus {
+  background-color: var(--bg-secondary);
+  border-color: var(--accent);
+  color: white;
+  box-shadow: 0 0 0 0.2rem rgba(229, 57, 53, 0.25);
+}
