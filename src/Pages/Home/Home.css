@@ -176,9 +176,7 @@ background-size: cover;
   color: #A3A3A3;
 }
 
-/* =========================
-   About Section
-========================= */
+/* ====About==== */
 .about {
   padding: 100px 10%;
   background: radial-gradient(circle at center, #3b0a0a, #000);
@@ -266,8 +264,6 @@ background-size: cover;
   font-size: 14px;
   color: #aaa;
 }
-
-/* Responsive About */
 @media (max-width: 900px) {
   .about-container {
     grid-template-columns: 1fr;
@@ -277,9 +273,7 @@ background-size: cover;
     grid-template-columns: 1fr;
   }
 }
-/* =========================
-   Services Section
-========================= */
+/* ====Services==== */
 .services {
   padding: 100px 10%;
   background: #050505;
@@ -370,9 +364,7 @@ background-size: cover;
     grid-template-columns: 1fr;
   }
 }
-/* =========================
-   CTA Section
-========================= */
+/* ====CTA==== */
 .cta {
   padding: 100px 10%;
   background: linear-gradient;

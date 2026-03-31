@@ -1,41 +1,89 @@
-import React, { useState, useEffect } from "react";
-import "../../Pages/Home/Home.css";
+import React from "react";
+import "../../Pages/Home/Home.css"; 
+
+import service1 from "../../assets/images/1.jpg";
+import service2 from "../../assets/images/2.jpg";
+import service3 from "../../assets/images/3.jpg";
+import service4 from "../../assets/images/4.jpg";
 
 function Services() {
-  const [servicesData, setServicesData] = useState(null);
-
-  useEffect(() => {
-    fetch("https://mocki.io/v1/6549d3e2-5099-4685-95aa-53cfcb17f03e")
-      .then(res => res.json())
-      .then(data => setServicesData(data))
-      .catch(err => console.error("Error:", err));
-  }, []);
-
-  if (!servicesData) return <p>Loading...</p>;
-
   return (
     <section className="services">
 
-      {/* الهيدر */}
       <div className="services-header">
+
         <div className="services-line"></div>
-        <h2>{servicesData.title}</h2>
-        <p>{servicesData.description}</p>
+
+        <h2>OUR SERVICES</h2>
+
+        <p>
+          Comprehensive fitness solutions designed to help you achieve your goals
+          faster and smarter.
+        </p>
+
       </div>
 
-      {/* الكروت */}
       <div className="services-container">
-        {servicesData.services.map((service, index) => (
-          <div className="service-card" key={index}>
-            <img src={service.image} alt={service.alt} />
+        <div className="service-card">
+          <img src={service1} alt="Personal Training" />
 
-            <div className="service-content">
-              <div className="icon">{service.icon}</div>
-              <h3>{service.title}</h3>
-              <p>{service.desc}</p>
-            </div>
+          <div className="service-content">
+            <div className="icon">👤</div>
+
+            <h3>PERSONAL TRAINING</h3>
+
+            <p>
+              One-on-one sessions with certified trainers tailored to your
+              specific goals and fitness level.
+            </p>
           </div>
-        ))}
+        </div>
+
+        <div className="service-card">
+          <img src={service2} alt="AI Nutrition" />
+
+          <div className="service-content">
+            <div className="icon">💡</div>
+
+            <h3>AI SMART NUTRITION</h3>
+
+            <p>
+              Intelligent meal planning, calorie tracking, and personalized
+              nutrition recommendations powered by AI.
+            </p>
+          </div>
+        </div>
+
+        <div className="service-card">
+          <img src={service3} alt="معدات" />
+
+          <div className="service-content">
+            <div className="icon">🏋️</div>
+
+            <h3>MODERN EQUIPMENT</h3>
+
+            <p>
+              State-of-the-art machines and free weights from leading brands
+              for optimal training results.
+            </p>
+          </div>
+        </div>
+
+        <div className="service-card">
+          <img src={service4} alt="Community" />
+
+          <div className="service-content">
+            <div className="icon">👥</div>
+
+            <h3>FITNESS COMMUNITY</h3>
+
+            <p>
+              Join group classes, challenges, and events. Connect with
+              like-minded fitness enthusiasts.
+            </p>
+          </div>
+        </div>
+
       </div>
 
     </section>

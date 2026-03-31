@@ -1,59 +1,95 @@
+import React from "react";
+import "../../Pages/Home/Home.css"; 
 
-import React, { useState, useEffect } from "react";
-import "../../Pages/Home/Home.css";
-
+import img1 from "../../assets/images/photo-1.jpg";
+import img2 from "../../assets/images/photo-2.jpg";
+import img3 from "../../assets/images/photo-3.jpg";
 function About() {
-  const [aboutData, setAboutData] = useState(null);
-
-  useEffect(() => {
-    fetch("https://mocki.io/v1/c6561f08-d32f-4f61-9204-a9e5deadc68a")
-      .then((res) => res.json())
-      .then((data) => setAboutData(data))
-      .catch((err) => console.error("Error fetching about data:", err));
-  }, []);
-
-  if (!aboutData) return <p>Loading...</p>;
-
   return (
     <section className="about">
-      <div className="about-container">
 
-        {/* الصور */}
+      <div className="about-container">
         <div className="about-images">
-          {aboutData.images.map((img, index) => (
-            <img
-              key={index}
-              src={img}
-              alt={`Fitness ${index + 1}`}
-              className={`img${index + 1}`}
-            />
-          ))}
+          <img
+            src={img1}
+            alt="Gym"
+            className="img1"
+          />
+
+          <img
+            src={img2}
+            alt="Workout"
+            className="img2"
+          />
+
+          <img
+            src={img3}
+            alt="Fitness"
+            className="img3"
+          />
+
         </div>
 
-        {/* المحتوى */}
         <div className="about-content">
+
           <div className="about-line"></div>
 
-          <h2>{aboutData.title}</h2>
+          <h2>ABOUT FITNESS TIME</h2>
 
-          {aboutData.description.map((desc, index) => (
-            <p key={index}>{desc}</p>
-          ))}
+          <p>
+            Founded in 2015, Fitness Time has grown from a single gym to a
+            comprehensive fitness ecosystem. Our vision is to make world-class
+            fitness accessible to everyone, combining state-of-the-art
+            equipment with cutting-edge technology.
+          </p> 
+
+          <p>
+            Our training environment is designed to inspire. With dedicated
+            zones for strength training, cardio, functional fitness, and group
+            classes, every workout becomes an experience. Our AI-powered
+            nutrition assistant ensures your diet supports your fitness goals.
+          </p>
 
           <div className="about-features">
-            {aboutData.features.map((feature, index) => (
-              <div className="feature" key={index}>
-                <span>{feature.icon}</span>
-                <div>
-                  <h4>{feature.title}</h4>
-                  <p>{feature.desc}</p>
-                </div>
+
+            <div className="feature">
+              <span>✓</span>
+              <div>
+                <h4>24/7 Access</h4>
+                <p>Train anytime, anywhere</p>
               </div>
-            ))}
+            </div>
+
+            <div className="feature">
+              <span>✓</span>
+              <div>
+                <h4>Expert Trainers</h4>
+                <p>Certified professionals</p>
+              </div>
+            </div>
+
+            <div className="feature">
+              <span>✓</span>
+              <div>
+                <h4>Modern Equipment</h4>
+                <p>Latest fitness tech</p>
+              </div>
+            </div>
+
+            <div className="feature">
+              <span>✓</span>
+              <div>
+                <h4>AI Nutrition</h4>
+                <p>Personalized plans</p>
+              </div>
+            </div>
+
           </div>
 
         </div>
+
       </div>
+
     </section>
   );
 }
