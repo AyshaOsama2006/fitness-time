@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 import Login from './Pages/Login/Login'
-import Nutrition from './Pages/Nutrition/Nutrition'
+import Nutrition from "./Pages/Nutrition/NutritionComponents/Nutrition";
 import TrainersPage from './Pages/Trainers/TrainersPage'
 import Profile from './Pages/Profile/Profile'
 import Store from './Pages/Store/Store'
