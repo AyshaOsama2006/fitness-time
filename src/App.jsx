@@ -7,18 +7,23 @@ import TrainersPage from './Pages/Trainers/TrainersPage'
 import Profile from './Pages/Profile/Profile'
 import Store from './Pages/Store/Store'
 import Header from './Components/Header/Header'
+import Home from './Pages/Home/Home'
+import Footer from './Components/Footer/Footer'
+
 export default function App() {
   return (
     <BrowserRouter>
-     <Header />
+      <Header />
       <Routes>
-       <Route path="/" element={<Navigate to="/login" replace />} />
-<Route path="/store" element={<Store />} />
-<Route path="/login" element={<Login />} />
-<Route path="/nutrition" element={<Nutrition />} />
-<Route path="/trainerspage" element={<TrainersPage />} />
-<Route path="/Profile" element={<Profile />} />
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/store" element={<Store />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/nutrition" element={<Nutrition />} />
+        <Route path="/trainerspage" element={<TrainersPage />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }
