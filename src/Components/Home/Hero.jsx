@@ -1,6 +1,6 @@
 import React from "react";
 import "../../Pages/Home/Home.css";
-import bgImage from "../../assets/images/7.jpg";
+import bgImage from "../../assets/images/photo-1.jpg";
 
 function Hero() {
   return (
@@ -8,7 +8,7 @@ function Hero() {
       className="hero d-flex align-items-center"
       style={{
         minHeight: "100vh",
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(${bgImage})`,
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9)), url(${bgImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         color: "white",
@@ -36,7 +36,14 @@ function Hero() {
 
             <div className="d-flex flex-column flex-sm-row gap-3 mb-4 hero-buttons">
               <button className="btn btn-danger px-4 py-2">START YOUR JOURNEY</button>
-              <button className="btn btn-outline-light px-4 py-2">MEET OUR TRAINERS</button>
+              <button
+               className="btn px-4 py-2 rounded"
+               style={{
+               color: "#fff",           
+               border: "2px solid #cfcfcf", 
+              background: "transparent" 
+              }}
+              >MEET OUR TRAINERS</button>
             </div>
 
             <div className="d-flex flex-wrap gap-4 hero-stats">
