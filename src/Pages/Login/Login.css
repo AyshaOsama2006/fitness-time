@@ -1,0 +1,144 @@
+.login-wrapper {
+  position: relative; 
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438  ") center/cover no-repeat;
+}
+.login-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+}
+
+.login-wrapper {
+  width: 100%;
+  min-height: 100vh;
+}
+body {
+  margin: 0;
+}
+.container-box {
+  position: relative;
+  z-index: 1;
+}
+.container-box {
+  position: relative;
+  background: #1b1b1b;
+  padding: 50px;
+  border-radius: 12px;
+  width: 500px;
+  border: 1px solid #444;
+  transition: 0.3s;
+}
+
+.container-box:hover {
+  box-shadow: 0 0 25px rgba(255,0,0,0.5);
+  transform: translateY(-3px);
+  border-color: #ff0000;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.title span {
+  color: #ff0000;
+}
+
+.title h2 {
+  font-size: 34px;
+  font-weight: bold;
+  color: white;
+}
+
+.title p {
+  color: #fcf2f2;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.form-label {
+  color: #fff9f9;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.form-control {
+  background: #222;
+  border: 1px solid #555;
+  color: white;
+  padding: 12px;
+  font-size: 15px;
+}
+
+.form-control:focus {
+  border-color: #ff0000;
+  box-shadow: none;
+  background: #222;
+  color: white;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+  color: #ff4444;
+  font-size: 14px;
+}
+
+.btn-main {
+  background: #ff0000 !important;
+  border: none;
+  width: 100%;
+  padding: 13px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white !important;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.btn-main:hover {
+  background: #cc0000 !important;
+}
+
+.switch-text {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 15px;
+  color: white;
+}
+
+.switch-text a {
+  color: #a81d1d;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.switch-text a:hover {
+  text-decoration: underline;
+  color: #8a1c1c;
+}
+
+
+.form-label {
+  display: block;       
+  text-align: left;     
+  margin-bottom: 5px;   
+  color: #fff9f9;
+  font-weight: bold;
+  font-size: 15px;
+}
+
