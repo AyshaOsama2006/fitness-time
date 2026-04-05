@@ -1,5 +1,5 @@
 import React from "react";
-import "../../Pages/Home/Home.css"; // CSS الأصلي للألوان والخطوط
+import "../../Pages/Home/Home.css"; 
 
 function CTA() {
   return (

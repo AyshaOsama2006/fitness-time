@@ -1,5 +1,5 @@
 import React from "react";
-import "../../Pages/Home/Home.css"; // CSS الكامل الذي أرسلته
+import "../../Pages/Home/Home.css"; 
 
 import img1 from "../../assets/images/photo-1.jpg";
 import img2 from "../../assets/images/photo-2.jpg";
@@ -10,14 +10,12 @@ function About() {
     <section className="about">
       <div className="container about-container">
 
-        {/* ==== صور About مع CSS Grid كما في CSS ==== */}
         <div className="about-images">
           <img src={img1} alt="Gym" className="img1" />
           <img src={img2} alt="Workout" className="img2" />
           <img src={img3} alt="Fitness" className="img3" />
         </div>
 
-        {/* ==== محتوى About ==== */}
         <div className="about-content">
           <div className="about-line"></div>
 
@@ -37,7 +35,6 @@ function About() {
             nutrition assistant ensures your diet supports your fitness goals.
           </p>
 
-          {/* ==== المميزات ==== */}
           <div className="about-features">
             <div className="feature">
               <span>✓</span>

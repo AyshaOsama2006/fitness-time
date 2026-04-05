@@ -19,7 +19,6 @@ function Hero() {
 
         <div className="row justify-content-between align-items-center">
 
-          {/* Hero Left */}
           <div className="col-12 col-lg-7 hero-left mb-5 mb-lg-0">
 
             <div className="hero-line mb-3" style={{ width: "60px", height: "4px", backgroundColor: "#ff3b3b" }}></div>
@@ -59,7 +58,6 @@ function Hero() {
 
           </div>
 
-          {/* Hero Card */}
           <div className="col-12 col-lg-4">
             <div className="hero-card p-4 rounded" style={{
               background: "rgba(255,255,255,0.05)",

@@ -11,7 +11,6 @@ function Services() {
     <section className="services py-5">
       <div className="container">
 
-        {/* Header */}
         <div className="text-center mb-5 services-header">
           <div className="services-line mx-auto mb-3"></div>
           <h2 className="fw-bold mb-3">OUR SERVICES</h2>
@@ -20,7 +19,6 @@ function Services() {
           </p>
         </div>
 
-        {/* Services Cards */}
         <div className="row g-4 services-container">
 
           {[service1, service2, service3, service4].map((img, idx) => {
