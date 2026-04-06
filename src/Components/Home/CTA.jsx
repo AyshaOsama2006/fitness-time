@@ -1,24 +1,34 @@
 import React from "react";
-import "../../Pages/Home/Home.css";function CTA() {
+import "bootstrap/dist/css/bootstrap.min.css";
+
+function CTA() {
   return (
-    <section className="cta">
-
-      <div className="cta-container">
-
-        <h2>READY TO START YOUR TRANSFORMATION?</h2>
-
-        <p>
+    <section
+      className="py-5 text-center text-white border-bottom"
+      style={{ borderColor: "rgba(255,255,255,0.15)" }}
+    >
+      <div className="container" style={{ maxWidth: "700px" }}>
+        <h2 className="mb-4 fw-bold fs-3">READY TO START YOUR TRANSFORMATION?</h2>
+        <p className="mb-4 text-light-gray" style={{ lineHeight: "1.6" }}>
           Join Fitness Time today and get access to all our facilities,
-          trainers, and AI-powered <br/>tools.
+          trainers,<br /> and AI-powered tools.
         </p>
-
-        <div className="cta-buttons">
-          <button className="cta-primary">View Membership Plans</button>
-          <button className="cta-secondary">Try AI Nutrition</button>
+        <div className="d-flex flex-column flex-sm-row justify-content-center gap-3">
+          <button className="btn btn-danger fw-semibold px-4 py-2 rounded">
+            View Membership Plans
+          </button>
+          <button
+         className="btn px-4 py-2 rounded"
+           style={{
+           color: "#fff",           
+           border: "2px solid #cfcfcf", 
+          background: "transparent" 
+              }}
+   >
+              Try AI Nutrition
+         </button>
         </div>
-
       </div>
-
     </section>
   );
 }

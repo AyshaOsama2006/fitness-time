@@ -8,84 +8,44 @@ import service4 from "../../assets/images/4.jpg";
 
 function Services() {
   return (
-    <section className="services">
+    <section className="services py-5">
+      <div className="container">
 
-      <div className="services-header">
+        <div className="text-center mb-5 services-header">
+          <div className="services-line mx-auto mb-3"></div>
+          <h2 className="fw-bold mb-3">OUR SERVICES</h2>
+          <p className="mx-auto" style={{ color: "#aaa", maxWidth: "600px" }}>
+            Comprehensive fitness solutions designed to help you achieve your goals faster and smarter.
+          </p>
+        </div>
 
-        <div className="services-line"></div>
+        <div className="row g-4 services-container">
 
-        <h2>OUR SERVICES</h2>
+          {[service1, service2, service3, service4].map((img, idx) => {
+            const titles = ["PERSONAL TRAINING", "AI SMART NUTRITION", "MODERN EQUIPMENT", "FITNESS COMMUNITY"];
+            const icons = ["👤", "💡", "🏋️", "👥"];
+            const descriptions = [
+              "One-on-one sessions with certified trainers tailored to your specific goals and fitness level.",
+              "Intelligent meal planning, calorie tracking, and personalized nutrition recommendations powered by AI.",
+              "State-of-the-art machines and free weights from leading brands for optimal training results.",
+              "Join group classes, challenges, and events. Connect with like-minded fitness enthusiasts."
+            ];
+            return (
+              <div key={idx} className="col-12 col-md-6 col-lg-3">
+                <div className="service-card card h-100 d-flex flex-column bg-dark border-secondary text-white">
+                  <img src={img} alt={titles[idx]} className="card-img-top" />
+                  <div className="card-body service-content flex-grow-1 d-flex flex-column">
+                    <div className="icon mb-2">{icons[idx]}</div>
+                    <h3 className="card-title mb-2">{titles[idx]}</h3>
+                    <p className="card-text">{descriptions[idx]}</p>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
 
-        <p>
-          Comprehensive fitness solutions designed to help you achieve your goals
-          faster and smarter.
-        </p>
-
+        </div>
       </div>
-
-      <div className="services-container">
-        <div className="service-card">
-          <img src={service1} alt="Personal Training" />
-
-          <div className="service-content">
-            <div className="icon">👤</div>
-
-            <h3>PERSONAL TRAINING</h3>
-
-            <p>
-              One-on-one sessions with certified trainers tailored to your
-              specific goals and fitness level.
-            </p>
-          </div>
-        </div>
-
-        <div className="service-card">
-          <img src={service2} alt="AI Nutrition" />
-
-          <div className="service-content">
-            <div className="icon">💡</div>
-
-            <h3>AI SMART NUTRITION</h3>
-
-            <p>
-              Intelligent meal planning, calorie tracking, and personalized
-              nutrition recommendations powered by AI.
-            </p>
-          </div>
-        </div>
-
-        <div className="service-card">
-          <img src={service3} alt="معدات" />
-
-          <div className="service-content">
-            <div className="icon">🏋️</div>
-
-            <h3>MODERN EQUIPMENT</h3>
-
-            <p>
-              State-of-the-art machines and free weights from leading brands
-              for optimal training results.
-            </p>
-          </div>
-        </div>
-
-        <div className="service-card">
-          <img src={service4} alt="Community" />
-
-          <div className="service-content">
-            <div className="icon">👥</div>
-
-            <h3>FITNESS COMMUNITY</h3>
-
-            <p>
-              Join group classes, challenges, and events. Connect with
-              like-minded fitness enthusiasts.
-            </p>
-          </div>
-        </div>
-
-      </div>
-
     </section>
   );
 }
