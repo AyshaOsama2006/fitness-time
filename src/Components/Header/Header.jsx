@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation } from "react-router-dom";
 import dumbbell from '../../assets/dumbbell.png'
 import '../Header/header.css'
 function Header() {
@@ -7,14 +7,15 @@ function Header() {
   const [collapsed, setCollapsed] = useState(true);
 
   const navItems = [
-    { label: "Home", to: "/", icon: "bi bi-house" },
-    { label: "AI Meals", to: "/ai-meals", icon: "bi bi-egg-fried" },
-    { label: "Membership", to: "/membership", icon: "bi bi-credit-card" },
-    { label: "Store", to: "/store", icon: "bi bi-bag" },
-    { label: "Trainers", to: "/trainers", icon: "bi bi-people" },
-    { label: "Exercises", to: "/exercises", icon: "bi bi-play" },
-  ];
+  { label: "Home", to: "/home", icon: "bi bi-house" },
+  { label: "Nutrition", to: "/nutrition", icon: "bi bi-egg-fried" },
+  { label: "Store", to: "/store", icon: "bi bi-bag" },
+  { label: "Trainers", to: "/trainerspage", icon: "bi bi-people" },
+  { label: "Profile", to: "/profile", icon: "bi bi-person" },
+];
 
+
+if (location.pathname === "/login") return null;
   return (
     <>
 
@@ -22,7 +23,7 @@ function Header() {
         <div className="container-fluid">
  
           
-          <Link className="fitness-brand" to="/">
+          <Link className="fitness-brand" to="/home">
             <img src={dumbbell} alt="logo" width="30" />
             Fitness Time
           </Link>

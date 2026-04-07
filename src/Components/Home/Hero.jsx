@@ -1,8 +1,9 @@
 import React from "react";
 import "../../Pages/Home/Home.css";
 import bgImage from "../../assets/images/photo-1.jpg";
-
+import { useNavigate } from "react-router-dom";
 function Hero() {
+   const navigate = useNavigate();
   return (
     <section
       className="hero d-flex align-items-center"
@@ -35,15 +36,17 @@ function Hero() {
             </p>
 
             <div className="d-flex flex-column flex-sm-row gap-3 mb-4 hero-buttons">
-              <button className="btn btn-danger px-4 py-2">START YOUR JOURNEY</button>
+              <button className="btn btn-danger px-4 py-2"
+              onClick={() => navigate("/membershipplans")}>START YOUR JOURNEY</button>
               <button
                className="btn px-4 py-2 rounded"
                style={{
                color: "#fff",           
                border: "2px solid #cfcfcf", 
               background: "transparent" 
-              }}
-              >MEET OUR TRAINERS</button>
+              }} onClick={() => navigate("/trainerspage")}
+              > 
+                MEET OUR TRAINERS</button>
             </div>
 
             <div className="d-flex flex-wrap gap-4 hero-stats">
