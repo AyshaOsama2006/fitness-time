@@ -43,7 +43,7 @@ const trainers = [
     experience: "9+ years",
     clients: "200+ Clients",
     skills: ["Pilates", "Core Training", "Flexibility"],
-    image: "/images/t5.jpeg",
+    image: "/images/5.jpeg",
      rating: 4.8,
      availability: "Saturday • 3:00 PM - 6:00 PM"
   },
@@ -67,7 +67,7 @@ const trainers = [
     experience: "10+ years",
     clients: "190+ Clients",
     skills: ["Nutrition", "Wellness", "Meal Planning"],
-    image: "/images/t6.jpeg",
+    image: "/images/6.jpeg",
      rating: 4.9,
      availability: "Friday • 2:00 PM - 5:00 PM"
   }

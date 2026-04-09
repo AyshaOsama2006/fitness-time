@@ -37,7 +37,7 @@ function Hero() {
 
             <div className="d-flex flex-column flex-sm-row gap-3 mb-4 hero-buttons">
               <button className="btn btn-danger px-4 py-2"
-              onClick={() => navigate("/membershipplans")}>START YOUR JOURNEY</button>
+              onClick={() => navigate("/membership")}>START YOUR JOURNEY</button>
               <button
                className="btn px-4 py-2 rounded"
                style={{

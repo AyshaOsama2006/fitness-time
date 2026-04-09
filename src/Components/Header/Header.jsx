@@ -12,6 +12,7 @@ function Header() {
   { label: "Store", to: "/store", icon: "bi bi-bag" },
   { label: "Trainers", to: "/trainerspage", icon: "bi bi-people" },
   { label: "Profile", to: "/profile", icon: "bi bi-person" },
+  { label: "Membership", to: "/membership", icon: "bi bi-card-checklist" },
 ];
 
 
@@ -54,16 +55,16 @@ if (location.pathname === "/login") return null;
               );
             })}
             
-            <Link className="logout-link logout-mobile" to="/logout">
+            <Link className="logout-link logout-mobile" to="/login">
               <i className="bi bi-box-arrow-right"></i>
-              Logout
+              Login
             </Link>
           </div>
  
           
-          <Link className="logout-link logout-desktop" to="/logout">
+          <Link className="logout-link logout-desktop" to="/login">
             <i className="bi bi-box-arrow-right"></i>
-            Logout
+             Login
           </Link>
  
         </div>
