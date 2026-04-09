@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-
+import MembershipPlans from "./components/Membership/MembershipPlans.jsx";
+import Section from "./components/Membership/Section.jsx";
 import Login from './Pages/Login/Login'
 import Nutrition from "./Pages/Nutrition/NutritionComponents/Nutrition";
 import TrainersPage from './Pages/Trainers/TrainersPage'
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/nutrition" element={<Nutrition />} />
         <Route path="/trainerspage" element={<TrainersPage />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/membership" element={<MembershipPlans />} />
       </Routes>
       <Footer />
     </BrowserRouter>
