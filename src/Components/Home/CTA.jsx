@@ -1,7 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import { useNavigate } from "react-router-dom";
 function CTA() {
+   const navigate = useNavigate();
   return (
     <section
       className="py-5 text-center text-white border-bottom"
@@ -14,7 +15,9 @@ function CTA() {
           trainers,<br /> and AI-powered tools.
         </p>
         <div className="d-flex flex-column flex-sm-row justify-content-center gap-3">
-          <button className="btn btn-danger fw-semibold px-4 py-2 rounded">
+          <button className="btn btn-danger fw-semibold px-4 py-2 rounded"
+          onClick={() => navigate("/membershipplans")}>
+            
             View Membership Plans
           </button>
           <button
@@ -24,7 +27,7 @@ function CTA() {
            border: "2px solid #cfcfcf", 
           background: "transparent" 
               }}
-   >
+    onClick={() => navigate("/nutrition")}>
               Try AI Nutrition
          </button>
         </div>

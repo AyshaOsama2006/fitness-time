@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router";
 import ProductCard from "../../Components/Store/ProductCard"
 import "../../Components/Store/Store.css";
+import { useNavigate } from "react-router-dom";
 const products = [
   {
     id: 1,
@@ -78,7 +79,7 @@ function Store() {
     activeCategory === "All"
       ? products
       : products.filter((p) => p.category === activeCategory);
-
+const navigate = useNavigate();
   return (
     <>
  
@@ -94,8 +95,9 @@ function Store() {
             <h1 className="store-hero-title">
               Our <span>Products</span>
             </h1>
-            <nav className="store-hero-breadcrumb">
-              <Link to="/">Home</Link>
+            <nav className="store-hero-breadcrumb"
+            onClick={() => navigate("/home")}>
+              HOME
               <span><i className="bi bi-chevron-right"></i></span>
               <span className="current">Store</span>
             </nav>
