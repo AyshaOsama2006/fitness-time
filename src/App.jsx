@@ -1,7 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import MembershipPlans from "./components/Membership/MembershipPlans.jsx";
-import Section from "./components/Membership/Section.jsx";
+import MembershipPlans from "./components/Membership/MembershipPlans";
 import Login from './Pages/Login/Login'
 import Nutrition from "./Pages/Nutrition/NutritionComponents/Nutrition";
 import TrainersPage from './Pages/Trainers/TrainersPage'
