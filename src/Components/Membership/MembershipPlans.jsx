@@ -4,12 +4,11 @@ import PlanCard from "./PlanCard";
 function MembershipPlans() {
 
   const plans = [
-
     {
       title: "MONTHLY",
       price: "$49",
       period: "/month",
-      image: "public/assets/photo-1534438327276-14e5300c3a48.jfif",
+      image: "/images/3.jpg",
       features: [
         { text: "Full gym access", available: true },
         { text: "Locker room access", available: true },
@@ -18,14 +17,13 @@ function MembershipPlans() {
         { text: "Personal training", available: false }
       ]
     },
-
     {
       title: "ANNUAL",
       price: "$399",
       period: "/year",
       save: "Save $189 compared to monthly",
       highlight: true,
-      image: "public/assets/photo-1571902943202-507ec2618e8f.jfif",
+      image: "/images/photo-2.jpg",
       features: [
         { text: "Full gym access", available: true },
         { text: "Premium locker room", available: true },
@@ -34,12 +32,11 @@ function MembershipPlans() {
         { text: "2 PT sessions/month", available: true }
       ]
     },
-
     {
       title: "VIP",
       price: "$149",
       period: "/month",
-      image: "public/assets/photo-1517836357463-d25dfeac3438.jfif",
+      image: "/images/photo-1.jpg",
       features: [
         { text: "24/7 VIP gym access", available: true },
         { text: "Private VIP lounge", available: true },
@@ -48,41 +45,66 @@ function MembershipPlans() {
         { text: "Free supplements", available: true }
       ]
     }
-
   ];
 
   return (
+    <div className="membership-page">
 
-    <section className="membership-section">
+      <section className="membership-section">
 
-      <div className="container">
+        <div className="membership-container">
 
-        <div className="header">
+          <div className="membership-header">
+            <div className="accent-line"></div>
 
-          <div className="accent-line"></div>
+            <h1 className="title">
+              MEMBERSHIP PLANS
+            </h1>
 
-          <h1 className="title">
-            MEMBERSHIP PLANS
-          </h1>
-
-          <p className="subtitle">
+            <p className="subtitle">
             Choose the plan that fits your fitness journey. All plans include access to our AI nutrition tools.
-          </p>
+
+            </p>
+          </div>
+
+          <div className="cards-layout">
+            {plans.map((plan, index) => (
+              <PlanCard key={index} {...plan} />
+            ))}
+          </div>
 
         </div>
 
-        <div className="plans-grid">
+      </section>
 
-          {plans.map((plan, index) => (
-            <PlanCard key={index} {...plan}/>
-          ))}
+      <section className="stats-section">
+
+        <p className="gym-stats-title">
+          Trusted by thousands of fitness enthusiasts
+        </p>
+
+        <div className="stats-container">
+
+          <div className="gym-stat">
+            <h2 className="gym-stat-number">500+</h2>
+            <p className="gym-stat-text">Active Members</p>
+          </div>
+
+          <div className="gym-stat">
+            <h2 className="gym-stat-number">20+</h2>
+            <p className="gym-stat-text">Professional Trainers</p>
+          </div>
+
+          <div className="gym-stat">
+            <h2 className="gym-stat-number">10+</h2>
+            <p className="gym-stat-text">Years Experience</p>
+          </div>
 
         </div>
 
-      </div>
+      </section>
 
-    </section>
-
+    </div>
   );
 }
 
