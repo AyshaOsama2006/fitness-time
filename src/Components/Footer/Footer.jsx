@@ -26,13 +26,14 @@ function Footer() {
           <div className="col-6 col-md-3 col-lg-2">
             <h5>QUICK LINKS</h5>
             <ul className="list-unstyled">
-              <li><Link to="/" className="footer-link">Home</Link></li>
-              <li><Link to="/ai-nutrition" className="footer-link">AI Nutrition</Link></li>
+              <li><Link to="/home" className="footer-link">Home</Link></li>
+              <li><Link to="/nutrition" className="footer-link">AI Nutrition</Link></li>
               <li><Link to="/membership" className="footer-link">Membership</Link></li>
               <li><Link to="/store" className="footer-link">Store</Link></li>
-              <li><Link to="/trainers" className="footer-link">Trainers</Link></li>
-            </ul>
+              <li><Link to="/trainerspage" className="footer-link">Trainers</Link></li>
+          </ul>
           </div>
+
 
           <div className="col-6 col-md-3 col-lg-2">
             <h5>SERVICES</h5>
