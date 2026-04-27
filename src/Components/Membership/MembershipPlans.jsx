@@ -1,6 +1,6 @@
 import React from "react";
 import PlanCard from "./PlanCard";
-
+import '../../Pages/Membership/Membership.css';
 function MembershipPlans() {
 
   const plans = [
@@ -8,7 +8,7 @@ function MembershipPlans() {
       title: "MONTHLY",
       price: "$49",
       period: "/month",
-      image: "/images/3.jpg",
+      image: "src/assets/images/3.jpg",
       features: [
         { text: "Full gym access", available: true },
         { text: "Locker room access", available: true },
@@ -23,7 +23,7 @@ function MembershipPlans() {
       period: "/year",
       save: "Save $189 compared to monthly",
       highlight: true,
-      image: "/images/photo-2.jpg",
+      image: "src/assets/images/photo-2.jpg",
       features: [
         { text: "Full gym access", available: true },
         { text: "Premium locker room", available: true },
@@ -36,7 +36,7 @@ function MembershipPlans() {
       title: "VIP",
       price: "$149",
       period: "/month",
-      image: "/images/photo-1.jpg",
+      image: "src/assets/images/photo-1.jpg",
       features: [
         { text: "24/7 VIP gym access", available: true },
         { text: "Private VIP lounge", available: true },
