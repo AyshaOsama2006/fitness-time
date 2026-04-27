@@ -1,15 +1,13 @@
 import React from "react";
+import '../../Pages/Membership/Membership.css';
 
 function PlanCard({ image, title, price, period, save, features, highlight }) {
   return (
     <div className={`plan-card ${highlight ? "active" : ""}`}>
-      
+
       <div className="img-wrapper">
         <img src={image} alt={title} />
-
-        <h3 className="plan-title">
-          {title}
-        </h3>
+        <h3 className="plan-title">{title}</h3>
       </div>
 
       <div className="card-body">
@@ -32,13 +30,12 @@ function PlanCard({ image, title, price, period, save, features, highlight }) {
           ))}
         </ul>
 
-        <button className="btn-plan">
-          CHOOSE PLAN
-        </button>
+        <button className="btn-plan">CHOOSE PLAN</button>
 
       </div>
 
     </div>
   );
 }
+
 export default PlanCard;
