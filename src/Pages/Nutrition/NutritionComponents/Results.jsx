@@ -78,7 +78,7 @@ const Results = ({
             </div>
             <div className="macro-item">
               <span>CARBS</span>
-              <strong>{personalResult.carbs}g</strong>
+              <strong>{personalResult.carbs || personalResult.carbohydrates}g</strong>
             </div>
             <div className="macro-item">
               <span>FATS</span>

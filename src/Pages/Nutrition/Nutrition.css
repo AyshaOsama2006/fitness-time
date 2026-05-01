@@ -121,7 +121,7 @@
   margin-top: 1rem;
 }
 
-/* --- Result Placeholders --- */
+/* --- Placeholder State --- */
 .placeholder-state {
   text-align: center;
   padding: 3rem 1rem;
@@ -135,7 +135,7 @@
   opacity: 0.5;
 }
 
-/* --- Meal Results --- */
+/*  Meal Results  */
 .meals-list {
   display: flex;
   flex-direction: column;
@@ -186,7 +186,7 @@
 .macro-tag.carbs { background: rgba(255, 193, 7, 0.2); color: #FFC107; }
 .macro-tag.fat { background: rgba(76, 175, 80, 0.2); color: #4CAF50; }
 
-/* --- Calorie Result Circle --- */
+/*Calorie Result Circle  */
 .calorie-big-circle {
   width: 180px;
   height: 180px;
@@ -212,7 +212,7 @@
   font-size: 0.9rem;
 }
 
-/* --- Stat Boxes --- */
+/* Stat Boxes  */
 .stat-box {
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
@@ -233,7 +233,7 @@
 .stat-box.green strong { color: #4CAF50; }
 .stat-box span { font-size: 0.85rem; color: var(--text-secondary); }
 
-/* --- Personal Result --- */
+/*  Personal Result*/
 .highlight-box {
   background: linear-gradient(135deg, rgba(229, 57, 53, 0.1), transparent);
   border: 1px solid var(--accent);

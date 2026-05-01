@@ -7,15 +7,21 @@ const CalorieForm = ({
   loading 
 }) => {
 
-  const handleImage = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setCalorieData({ 
-        ...calorieData, 
-        image: URL.createObjectURL(file)
+ const handleImage = (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setCalorieData({
+        ...calorieData,
+        image: reader.result,        // base64 كامل للعرض
+        imageBase64: reader.result.split(',')[1],  // base64 بدون header للباك
+        imageType: file.type
       });
-    }
-  };
+    };
+    reader.readAsDataURL(file);
+  }
+};
 
   return (
     <div className="fade-in">

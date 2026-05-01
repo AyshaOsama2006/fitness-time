@@ -24,7 +24,7 @@ const MealForm = ({
     <div className="fade-in">
       <h3 className="card-title mb-4">📋 Meal Planner</h3>
       
-      {/* اختيار الهدف */}
+      {/*  بختار الهدف */}
       <div className="mb-4">
         <label className="form-label"> CHOOSE YOUR GOAL</label>
         <div className="goal-grid">

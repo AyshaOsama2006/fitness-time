@@ -11,20 +11,17 @@
   --border-color: #2A2A2A;
 }
 
-/* ✅ هذا هو الإصلاح الحقيقي */
+
 body {
   margin: 0;
   font-family: 'Space Grotesk', sans-serif;
-  background-color: var(--bg-primary); /* بدون صورة */
+  background-color: var(--bg-primary); 
   color: var(--text-primary);
   overflow-x: hidden;
 
-  /* ❌ حذفنا flex لأنه كان يخرب كل الصفحات */
-  /* ❌ حذفنا height 100vh */
-  /* ❌ حذفنا background image */
+ 
 }
 
-/* ❌ حذفنا overlay بالكامل لأنه كان يغطي الصفحة */
 body::before {
   display: none;
 }

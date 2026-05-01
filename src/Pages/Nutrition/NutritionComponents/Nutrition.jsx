@@ -22,7 +22,7 @@ export default function Nutrition() {
   const [calorieResult, setCalorieResult] = useState(null);
   const [personalResult, setPersonalResult] = useState(null);
 
-  const { getMeals, getCalc } = useApi();
+const { getMeals, getCalc, getCalorieAnalysis } = useApi();
 
   // 1. توليد الوجبات
   const handleMeals = useCallback(async () => {
@@ -36,19 +36,20 @@ export default function Nutrition() {
     setLoading(false);
   }, [mealData.goal, getMeals]);
 
-  // 2. تحليل السعرات (Mock مؤقت)
-  const handleCalories = useCallback(() => {
-    setLoading(true);
-    // Mock data
-    setCalorieResult({ 
-      calories: 450 + Math.floor(Math.random() * 200),
-      protein: 25 + Math.floor(Math.random() * 15),
-      carbs: 50 + Math.floor(Math.random() * 20),
-      fat: 15 + Math.floor(Math.random() * 10)
+  const handleCalories = useCallback(async () => {
+  setLoading(true);
+  try {
+    const result = await getCalorieAnalysis({
+      description: calorieData.description,
+      imageBase64: calorieData.imageBase64,
+      imageType: calorieData.imageType
     });
-    setLoading(false);
-  }, []);
-
+    setCalorieResult(result);
+  } catch (e) {
+    console.error('error:', e);
+  }
+  setLoading(false);
+}, [calorieData, getCalorieAnalysis]);
   // 3. الحساب الشخصي
   const handlePersonal = useCallback(async () => {
     setLoading(true);
