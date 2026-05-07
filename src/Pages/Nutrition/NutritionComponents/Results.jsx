@@ -16,7 +16,7 @@ const Results = ({
             <div key={i} className="meal-item mb-3 p-3 border rounded">
               <div className="d-flex justify-content-between">
                 <h5>{meal.name}</h5>
-                <span className="badge bg-danger">{meal.calories} سعرة</span>
+                <span className="badge bg-danger">{meal.calories}kcal</span>
               </div>
               <p className="small">{meal.ingredients}</p>
               <div>
