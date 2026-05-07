@@ -3,6 +3,7 @@ import "./Login.css";
 
 export default function Login() {
   const [showSignup, setShowSignup] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const showSignupForm = (e) => {
     e.preventDefault();
@@ -14,12 +15,81 @@ export default function Login() {
     setShowSignup(false);
   };
 
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
+    try {
+      const res = await fetch("http://localhost:5000/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: e.target.email.value,
+          password: e.target.password.value,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Login failed");
+      }
+
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      window.location.href = "/profile";
+
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const res = await fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: e.target.firstName.value + " " + e.target.lastName.value,
+          email: e.target.email.value,
+          password: e.target.password.value,
+          age: null,
+          height: null,
+          weight: null,
+          activityLevel: null,
+          fitnessGoal: null,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Signup failed");
+      }
+
+      alert("Account created");
+      setShowSignup(false);
+
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="login-wrapper">
+
       {!showSignup && (
         <div className="container-box">
           <div className="title">
@@ -27,73 +97,59 @@ export default function Login() {
             <p>Login to your account</p>
           </div>
 
-          <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label className="form-label fs-5">Email</label>
-              <input type="email" name="email" className="form-control" placeholder="Enter email"/>
-            </div>
+          <form onSubmit={handleLogin}>
+            <input type="email" name="email" placeholder="Email" required />
+            <input type="password" name="password" placeholder="Password" required />
 
-            <div className="mb-3">
-              <label className="form-label fs-5">Password</label>
-              <input type="password" name="password" className="form-control" placeholder="Enter password"/>
-            </div>
+            <button type="submit" disabled={loading}>
+              {loading ? "Loading..." : "Login"}
+            </button>
 
-            <div className="remember">
-              <input type="checkbox" name="remember"/>
-              <label>Remember me</label>
-            </div>
-
-            <button type="submit" className="btn btn-main fs-5 mb-3 fw-bold">Login</button>
-
-            <a href="/home" className=" guest btn btn-danger  opacity-50 w-100 fw-bold ">
+            {/* Guest link */}
+            <span
+              onClick={() => window.location.href = "/home"}
+              className="guest-link"
+            >
               Continue as Guest
-            </a>
+            </span>
 
-            <div className="switch-text mt-1">
+            <p>
               Don't have an account?
-              <a href="#" onClick={showSignupForm}> Sign Up</a>
-            </div>
+              <button onClick={showSignupForm} className="link-btn">
+                Sign Up
+              </button>
+            </p>
           </form>
         </div>
       )}
 
       {showSignup && (
-        <div className="container-box signup-form">
-          <div className="title ">
+        <div className="container-box">
+          <div className="title">
             <h2><span>FITNESS</span> TIME</h2>
             <p>Create new account</p>
           </div>
 
-          <form onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <label className="form-label fs-5">First Name</label>
-              <input type="text" name="firstName" className="form-control" placeholder="First name"/>
-            </div>
+          <form onSubmit={handleSignup}>
+            <input type="text" name="firstName" placeholder="First name" required />
+            <input type="text" name="lastName" placeholder="Last name" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <input type="password" name="password" placeholder="Password" required />
 
-            <div className="mb-3">
-              <label className="form-label fs-5">Last Name</label>
-              <input type="text" name="lastName" className="form-control" placeholder="Last name"/>
-            </div>
+            <button type="submit" disabled={loading}>
+              {loading ? "Creating..." : "Create Account"}
+            </button>
 
-            <div className="mb-3">
-              <label className="form-label fs-5">Email</label>
-              <input type="email" name="email" className="form-control" placeholder="Enter email"/>
-            </div>
-
-            <div className="mb-3">
-              <label className="form-label fs-5">Password</label>
-              <input type="password" name="password" className="form-control" placeholder="Create password"/>
-            </div>
-
-            <button type="submit" className="btn btn-main fs-5 fw-bold">Create Account</button>
-
-            <div className="switch-text">
+            <p>
               Already have an account?
-              <a href="#" onClick={showLoginForm}> Login</a>
-            </div>
+              <button onClick={showLoginForm} className="link-btn">
+                Login
+              </button>
+            </p>
           </form>
         </div>
       )}
+
     </div>
   );
 }
