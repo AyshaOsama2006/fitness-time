@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
 
-const API_BASE = "http://localhost:5000"; // عدّل إذا عندك .env
+const API_BASE = "http://localhost:5000"; 
 
 export default function Profile() {
   const [profile, setProfile] = useState(null);
@@ -25,7 +25,6 @@ export default function Profile() {
 
         const user = JSON.parse(userStr);
         
-        // 🔹 1. جلب بيانات البروفايل الأساسية
         const res = await fetch(`${API_BASE}/users/${user.id}`, {
           headers: {
             "Authorization": `Bearer ${token}`,
@@ -45,12 +44,10 @@ export default function Profile() {
         const userData = await res.json();
         setProfile(userData);
 
-        // 🔹 2. حساب قيم مشتقة (مؤقتاً حتى نضيفها في الباك إند)
         const bmi = userData.height && userData.weight 
           ? (userData.weight / Math.pow(userData.height / 100, 2)).toFixed(1)
           : null;
 
-        // 🔹 3. محاكاة بيانات النيوترشن والبروجرس (لاحقاً نطلبها من API)
         setNutrition({
           calories: { current: 1850, target: 2500 },
           protein: { current: 120, target: 180 },
@@ -80,7 +77,6 @@ export default function Profile() {
     fetchProfileData();
   }, []);
 
-  // 🔄 Loading State
   if (loading) {
     return (
       <div className="container mt-5 text-center text-white">
@@ -91,7 +87,6 @@ export default function Profile() {
     );
   }
 
-  // ❌ Error State
   if (error) {
     return (
       <div className="container mt-5 text-center text-danger">
@@ -103,7 +98,6 @@ export default function Profile() {
     );
   }
 
-  // ✅ Render Profile
   const bmi = profile.height && profile.weight 
     ? (profile.weight / Math.pow(profile.height / 100, 2)).toFixed(1)
     : "N/A";
@@ -120,7 +114,6 @@ export default function Profile() {
       <section className="container mt-4">
         <div className="row g-4">
 
-          {/* LEFT CARD - User Info */}
           <div className="col-lg-4 col-md-12">
             <div className="card profile-card mb-4">
               <img
@@ -178,10 +171,8 @@ export default function Profile() {
             </div>
           </div>
 
-          {/* RIGHT SIDE - Body Stats & Nutrition */}
           <div className="col-lg-8 col-md-12">
             
-            {/* BODY STATISTICS */}
             <div className="card section-card p-4 mb-4">
               <h4 className="section-title">BODY STATISTICS</h4>
               <div className="row g-4">
@@ -211,7 +202,6 @@ export default function Profile() {
               </div>
             </div>
 
-            {/* NUTRITION TARGETS */}
             <div className="card section-card p-4">
               <h4 className="section-title">DAILY NUTRITION TARGETS</h4>
               
@@ -247,7 +237,6 @@ export default function Profile() {
           </div>
         </div>
 
-        {/* MONTHLY PROGRESS */}
         <div className="container mt-5">
           <div className="card monthly-card">
             <div className="card-body">
