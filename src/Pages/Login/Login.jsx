@@ -22,9 +22,7 @@ export default function Login() {
     try {
       const res = await fetch("http://localhost:5000/users/login", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: e.target.email.value,
           password: e.target.password.value,
@@ -33,16 +31,15 @@ export default function Login() {
 
       const data = await res.json();
 
-      if (!res.ok) {
-        throw new Error(data.message || "Login failed");
-      }
+      if (!res.ok) throw new Error(data.message || "Login failed");
 
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
+      alert("Login successful");
       window.location.href = "/profile";
-
     } catch (err) {
+      console.error(err);
       alert(err.message);
     } finally {
       setLoading(false);
@@ -54,33 +51,33 @@ export default function Login() {
     setLoading(true);
 
     try {
+      const formData = {
+        name: `${e.target.firstName.value} ${e.target.lastName.value}`,
+        email: e.target.email.value,
+        password: e.target.password.value,
+        age: e.target.age.value ? parseInt(e.target.age.value) : null,
+        height: e.target.height.value ? parseFloat(e.target.height.value) : null,
+        weight: e.target.weight.value ? parseFloat(e.target.weight.value) : null,
+        activityLevel: e.target.activityLevel.value || null,
+        fitnessGoal: e.target.fitnessGoal.value || null,
+      };
+
       const res = await fetch("http://localhost:5000/users", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: e.target.firstName.value + " " + e.target.lastName.value,
-          email: e.target.email.value,
-          password: e.target.password.value,
-          age: null,
-          height: null,
-          weight: null,
-          activityLevel: null,
-          fitnessGoal: null,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
 
       const data = await res.json();
 
-      if (!res.ok) {
-        throw new Error(data.message || "Signup failed");
-      }
+      if (!res.ok) throw new Error(data.message || "Signup failed");
 
-      alert("Account created");
+      alert("Account created successfully! Please login.");
       setShowSignup(false);
+      e.target.reset(); 
 
     } catch (err) {
+      console.error(err);
       alert(err.message);
     } finally {
       setLoading(false);
@@ -89,41 +86,28 @@ export default function Login() {
 
   return (
     <div className="login-wrapper">
-
-      {!showSignup && (
+      {!showSignup ? (
         <div className="container-box">
           <div className="title">
             <h2><span>FITNESS</span> TIME</h2>
             <p>Login to your account</p>
           </div>
-
           <form onSubmit={handleLogin}>
             <input type="email" name="email" placeholder="Email" required />
             <input type="password" name="password" placeholder="Password" required />
-
             <button type="submit" disabled={loading}>
               {loading ? "Loading..." : "Login"}
             </button>
-
-            {/* Guest link */}
-            <span
-              onClick={() => window.location.href = "/home"}
-              className="guest-link"
-            >
+            <span onClick={() => window.location.href = "/home"} className="guest-link">
               Continue as Guest
             </span>
-
             <p>
               Don't have an account?
-              <button onClick={showSignupForm} className="link-btn">
-                Sign Up
-              </button>
+              <button type="button" onClick={showSignupForm} className="link-btn">Sign Up</button>
             </p>
           </form>
         </div>
-      )}
-
-      {showSignup && (
+      ) : (
         <div className="container-box">
           <div className="title">
             <h2><span>FITNESS</span> TIME</h2>
@@ -131,10 +115,56 @@ export default function Login() {
           </div>
 
           <form onSubmit={handleSignup}>
-            <input type="text" name="firstName" placeholder="First name" required />
-            <input type="text" name="lastName" placeholder="Last name" required />
+            <div className="form-row">
+              <input type="text" name="firstName" placeholder="First name" required />
+              <input type="text" name="lastName" placeholder="Last name" required />
+            </div>
+
             <input type="email" name="email" placeholder="Email" required />
-            <input type="password" name="password" placeholder="Password" required />
+            <input type="password" name="password" placeholder="Password" minLength="6" required />
+
+            <div className="form-row">
+              <input 
+                type="number" 
+                name="age" 
+                placeholder="Age" 
+                min="10" 
+                max="100"
+              />
+              <input 
+                type="number" 
+                name="height" 
+                placeholder="Height (cm)" 
+                min="100" 
+                max="250"
+              />
+              <input 
+                type="number" 
+                name="weight" 
+                placeholder="Weight (kg)" 
+                min="30" 
+                max="300"
+                step="0.1"
+              />
+            </div>
+
+            <select name="activityLevel" className="form-select">
+              <option value="">Select Activity Level</option>
+              <option value="sedentary">Sedentary (little or no exercise)</option>
+              <option value="light">Lightly Active (1-3 days/week)</option>
+              <option value="moderate">Moderately Active (3-5 days/week)</option>
+              <option value="active">Very Active (6-7 days/week)</option>
+              <option value="extreme">Extra Active (very hard exercise)</option>
+            </select>
+
+            <select name="fitnessGoal" className="form-select">
+              <option value="">Select Fitness Goal</option>
+              <option value="weight-loss">Weight Loss</option>
+              <option value="muscle-gain">Muscle Gain</option>
+              <option value="maintenance">Maintenance</option>
+              <option value="endurance">Improve Endurance</option>
+              <option value="flexibility">Improve Flexibility</option>
+            </select>
 
             <button type="submit" disabled={loading}>
               {loading ? "Creating..." : "Create Account"}
@@ -142,14 +172,11 @@ export default function Login() {
 
             <p>
               Already have an account?
-              <button onClick={showLoginForm} className="link-btn">
-                Login
-              </button>
+              <button type="button" onClick={showLoginForm} className="link-btn">Login</button>
             </p>
           </form>
         </div>
       )}
-
     </div>
   );
 }
