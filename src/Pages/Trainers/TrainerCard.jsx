@@ -2,7 +2,48 @@ import React from "react";
 
 
 
+
 function TrainerCard({ trainer }) {
+
+  const handleBooking = async () => {
+    try {
+
+      const token = localStorage.getItem("token");
+         console.log(token);
+      const response = await fetch("http://localhost:5000/bookings", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+
+        body: JSON.stringify({
+          trainerId: trainer.id,
+
+          bookingDate: new Date(),
+
+          bookingTime: "10:00:00",
+
+          status: "pending"
+        })
+      });
+
+      const data = await response.json();
+
+      console.log(data);
+
+      if (response.ok) {
+        alert("Booking created successfully");
+      } else {
+        alert(data.message || "Booking failed");
+      }
+
+    } catch (err) {
+      console.log(err);
+      alert("Server error");
+    }
+  };
+
   return (
     <div
       className="card mb-2"
@@ -13,10 +54,11 @@ function TrainerCard({ trainer }) {
         border: "1px solid rgba(220,53,69,0.3)",
         borderRadius: "16px",
         overflow: "hidden",
-     position: "relative" 
-          }}
+        position: "relative"
+      }}
     >
       <div className="row g-0">
+
         <div className="col-md-4">
           <img
             src={trainer.image}
@@ -29,17 +71,21 @@ function TrainerCard({ trainer }) {
         </div>
 
         <div className="col-md-8">
+
           <div className="card-body d-flex flex-column h-100">
-            
-        
+
             <h5 className="fw-bold mb-1">{trainer.name}</h5>
 
-        
-            <p className="text-danger mb-2" style={{ fontSize: "0.9rem", color: "#ff0000", 
-              fontFamily: "Barlow Condensed, sans-serif" }}>
+            <p
+              className="text-danger mb-2"
+              style={{
+                fontSize: "0.9rem",
+                color: "#ff0000",
+                fontFamily: "Barlow Condensed, sans-serif"
+              }}
+            >
               {trainer.specialty}
             </p>
-
 
             <p
               style={{
@@ -51,8 +97,8 @@ function TrainerCard({ trainer }) {
               {trainer.description}
             </p>
 
-        
             <div className="d-flex gap-3 my-2">
+
               <span
                 style={{
                   fontSize: "0.8rem",
@@ -74,15 +120,20 @@ function TrainerCard({ trainer }) {
                 <br />
                 <span style={{ color: "#888" }}>Clients</span>
               </span>
+
             </div>
 
-        
-            <p className="mb-1 fw-bold" style={{ fontSize: "0.85rem" }}>
+            <p
+              className="mb-1 fw-bold"
+              style={{ fontSize: "0.85rem" }}
+            >
               Skills
             </p>
 
             <div className="mb-3">
+
               {trainer.skills.map((skill, index) => (
+
                 <span
                   key={index}
                   style={{
@@ -98,20 +149,24 @@ function TrainerCard({ trainer }) {
                 >
                   {skill}
                 </span>
+
               ))}
+
             </div>
-<p
-  style={{
-    fontSize: "0.9rem",
-    color: "#ccc",
-    
-    marginBottom: "8px",
-    letterSpacing: "0.5px"
-  }}
->
-  {trainer.availability}
-</p>
+
+            <p
+              style={{
+                fontSize: "0.9rem",
+                color: "#ccc",
+                marginBottom: "8px",
+                letterSpacing: "0.5px"
+              }}
+            >
+              {trainer.availability}
+            </p>
+
             <button
+              onClick={handleBooking}
               style={{
                 background: "#ff0000",
                 border: "none",
@@ -121,36 +176,33 @@ function TrainerCard({ trainer }) {
                 fontWeight: "500",
                 transition: "0.3s"
               }}
-              onMouseOver={(e) =>
-                (e.target.style.background = "#ff0000")
-              }
-              onMouseOut={(e) =>
-                (e.target.style.background = "#ff0000")
-              }
             >
               Book Session
             </button>
+
             <div
-            style={{
-             position: "absolute",
-             top: "10px",
-            right: "10px",
-            background: "#500404",
-            color: "#fff",
-            padding: "4px 10px",
-            borderRadius: "5px",
-            fontSize: "0.8rem",
-            fontWeight: "bold",
-            display: "flex",
-            alignItems: "center",
-            gap: "5px"
-          }}
-           >
-  ⭐ {trainer.rating}
-</div>
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                background: "#500404",
+                color: "#fff",
+                padding: "4px 10px",
+                borderRadius: "5px",
+                fontSize: "0.8rem",
+                fontWeight: "bold",
+                display: "flex",
+                alignItems: "center",
+                gap: "5px"
+              }}
+            >
+              ⭐ {trainer.rating}
+            </div>
 
           </div>
+
         </div>
+
       </div>
     </div>
   );
