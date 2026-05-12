@@ -5,7 +5,14 @@ import { API_URLS } from "./Constants.jsx";
 export const useApi = () => {
   const postData = useCallback(async (url, data) => {
     try {
-      const res = await axios.post(url, data);
+      // بنجيب التوكن من اللوكال ستوريج
+      const token = localStorage.getItem('token');
+      
+      const res = await axios.post(url, data, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       return res.data;
     } catch (error) {
       console.error('API Error:', error);
