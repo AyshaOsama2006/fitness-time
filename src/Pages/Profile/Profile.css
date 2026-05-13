@@ -15,6 +15,7 @@ body {
   border-radius: 20px !important;
   overflow: hidden;
   transition: 0.4s ease;
+  
 }
 
 .profile-card:hover {
@@ -206,21 +207,25 @@ body {
   box-shadow: 0 0 25px rgba(255, 0, 0, 0.2);
 }
 
-
-
-.monthly-card {
-  background: #161616 !important;
-  border-radius: 20px !important;
-  border: 1px solid#202020 !important;
-  padding: 15px;
-  transition: 0.4s ease;
+.tip-box {
+  padding: 30px 20px;
+  border-radius: 18px;
+  transition: 0.35s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+  height: 100%;
 }
 
-.monthly-card:hover {
-  border-color: #dc3545 !important;
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(255, 0, 0, 0.2);
+.tip-box h3 {
+  font-size: 38px;
+  margin-bottom: 15px;
 }
+
+.tip-box:hover {
+  transform: translateY(-10px) scale(1.03);
+}
+
+
 
 .profile-img {
   border: 4px solid #dc3545;
@@ -235,4 +240,56 @@ body {
 .profile-img:hover {
   transform: scale(1.08);
   box-shadow: 0 0 30px rgba(255, 0, 0, 0.35);
+}
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.header-text {
+  text-align: center;
+  flex: 1;
+}
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+}
+
+
+.logout-btn {
+  background: transparent !important;
+  border: 1px solid #dc3545 !important;
+  color: white !important;
+  border-radius: 12px !important;
+  padding: 12px 28px !important;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #9d0716 !important;
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px rgba(220,53,69,0.4);
+}
+
+
+.delete-btn {
+  background: #9f1523 !important;
+  border: none !important;
+  color: white !important;
+  border-radius: 12px !important;
+  padding: 12px 28px !important;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.delete-btn:hover {
+  background: #a20c0c !important;
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(255,0,0,0.5);
 }
