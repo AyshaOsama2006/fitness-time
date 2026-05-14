@@ -9,7 +9,7 @@ import Store from './Pages/Store/Store'
 import Header from './Components/Header/Header'
 import Home from './Pages/Home/Home'
 import Footer from './Components/Footer/Footer'
-
+import BookingsPage from "./pages/Trainers/BookingsPage";
 export default function App() {
   return (
     <BrowserRouter>
@@ -23,6 +23,7 @@ export default function App() {
         <Route path="/trainerspage" element={<TrainersPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/membership" element={<MembershipPlans />} />
+        <Route path="/bookings" element={<BookingsPage />}/>
       </Routes>
       <Footer />
     </BrowserRouter>
