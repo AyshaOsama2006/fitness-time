@@ -1,6 +1,20 @@
 import { useState } from "react";
 import "./Login.css";
 
+const getRoleFromToken = (token) => {
+  if (!token) return null;
+  const payload = token.split(".")[1];
+  if (!payload) return null;
+  try {
+    const base64 = payload.replace(/-/g, "+").replace(/_/g, "/");
+    const padded = base64.padEnd(base64.length + ((4 - (base64.length % 4)) % 4), "=");
+    const decoded = JSON.parse(atob(padded));
+    return decoded?.role || null;
+  } catch (err) {
+    return null;
+  }
+};
+
 export default function Login() {
   const [showSignup, setShowSignup] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -33,8 +47,12 @@ export default function Login() {
 
       if (!res.ok) throw new Error(data.message || "Login failed");
 
+      const tokenRole = getRoleFromToken(data.token);
+      const baseUser = data.user && typeof data.user === "object" ? data.user : {};
+      const storedUser = { ...baseUser, role: baseUser.role ?? tokenRole };
+
       localStorage.setItem("token", data.token);
-      localStorage.setItem("user", JSON.stringify(data.user));
+      localStorage.setItem("user", JSON.stringify(storedUser));
 
       alert("Login successful");
       window.location.href = "/profile";

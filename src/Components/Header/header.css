@@ -70,6 +70,18 @@
         .fitness-nav-link i {
           font-size: 1rem;
         }
+
+        .cart-badge {
+          background: #ef4444;
+          color: #ffffff;
+          border-radius: 999px;
+          font-size: 0.7rem;
+          font-weight: 700;
+          padding: 0.1rem 0.45rem;
+          line-height: 1;
+          min-width: 20px;
+          text-align: center;
+        }
  
         .logout-link {
           color: #d1d5db !important;
