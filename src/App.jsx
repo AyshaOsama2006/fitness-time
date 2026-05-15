@@ -10,6 +10,7 @@ import AddProduct from './Pages/Store/AddProduct'
 import Header from './Components/Header/Header'
 import Home from './Pages/Home/Home'
 import Footer from './Components/Footer/Footer'
+import BookingsPage from "./pages/Trainers/BookingsPage";
 import Cart from './Pages/Cart/Cart'
 import Checkout from './Pages/Checkout/Checkout'
 import AdminOrders from './Pages/Orders/AdminOrders'
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/trainerspage" element={<TrainersPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/membership" element={<MembershipPlans />} />
+        <Route path="/bookings" element={<BookingsPage />}/>
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
