@@ -71,7 +71,32 @@ function MembershipPlans() {
 
         </div>
       </section>
+<div className="stats-section">
 
+  <h2 className="gym-stats-title">
+    Trusted by thousands of fitness enthusiasts
+  </h2>
+
+  <div className="stats-container">
+
+    <div className="gym-stat">
+      <h1 className="gym-stat-number">500+</h1>
+      <p className="gym-stat-text">Active Members</p>
+    </div>
+
+    <div className="gym-stat">
+      <h1 className="gym-stat-number">20+</h1>
+      <p className="gym-stat-text">Professional Trainers</p>
+    </div>
+
+    <div className="gym-stat">
+      <h1 className="gym-stat-number">10+</h1>
+      <p className="gym-stat-text">Years Experience</p>
+    </div>
+
+  </div>
+
+</div>
     </div>
   );
 }
