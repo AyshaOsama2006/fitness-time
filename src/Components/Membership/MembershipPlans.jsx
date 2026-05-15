@@ -1,10 +1,12 @@
 import React from "react";
 import PlanCard from "./PlanCard";
 import '../../Pages/Membership/Membership.css';
+
 function MembershipPlans() {
 
   const plans = [
-    {
+     {
+      id: 1,
       title: "MONTHLY",
       price: "$49",
       period: "/month",
@@ -18,12 +20,12 @@ function MembershipPlans() {
       ]
     },
     {
+      id: 2,
       title: "ANNUAL",
       price: "$399",
       period: "/year",
-      save: "Save $189 compared to monthly",
-      highlight: true,
       image: "src/assets/images/photo-2.jpg",
+      highlight: true,
       features: [
         { text: "Full gym access", available: true },
         { text: "Premium locker room", available: true },
@@ -33,6 +35,7 @@ function MembershipPlans() {
       ]
     },
     {
+      id: 3,
       title: "VIP",
       price: "$149",
       period: "/month",
@@ -51,59 +54,49 @@ function MembershipPlans() {
     <div className="membership-page">
 
       <section className="membership-section">
-
         <div className="membership-container">
 
           <div className="membership-header">
-            <div className="accent-line"></div>
-
-            <h1 className="title">
-              MEMBERSHIP PLANS
-            </h1>
-
+            <h1 className="title">MEMBERSHIP PLANS</h1>
             <p className="subtitle">
-            Choose the plan that fits your fitness journey. All plans include access to our AI nutrition tools.
-
+              Choose the plan that fits your fitness journey
             </p>
           </div>
 
           <div className="cards-layout">
             {plans.map((plan, index) => (
-              <PlanCard key={index} {...plan} />
+              <PlanCard key={plan.id} {...plan} />
             ))}
           </div>
 
         </div>
-
       </section>
+<div className="stats-section">
 
-      <section className="stats-section">
+  <h2 className="gym-stats-title">
+    Trusted by thousands of fitness enthusiasts
+  </h2>
 
-        <p className="gym-stats-title">
-          Trusted by thousands of fitness enthusiasts
-        </p>
+  <div className="stats-container">
 
-        <div className="stats-container">
+    <div className="gym-stat">
+      <h1 className="gym-stat-number">500+</h1>
+      <p className="gym-stat-text">Active Members</p>
+    </div>
 
-          <div className="gym-stat">
-            <h2 className="gym-stat-number">500+</h2>
-            <p className="gym-stat-text">Active Members</p>
-          </div>
+    <div className="gym-stat">
+      <h1 className="gym-stat-number">20+</h1>
+      <p className="gym-stat-text">Professional Trainers</p>
+    </div>
 
-          <div className="gym-stat">
-            <h2 className="gym-stat-number">20+</h2>
-            <p className="gym-stat-text">Professional Trainers</p>
-          </div>
+    <div className="gym-stat">
+      <h1 className="gym-stat-number">10+</h1>
+      <p className="gym-stat-text">Years Experience</p>
+    </div>
 
-          <div className="gym-stat">
-            <h2 className="gym-stat-number">10+</h2>
-            <p className="gym-stat-text">Years Experience</p>
-          </div>
+  </div>
 
-        </div>
-
-      </section>
-
+</div>
     </div>
   );
 }
