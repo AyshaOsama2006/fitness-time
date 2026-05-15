@@ -1,85 +1,119 @@
-import React, { useState } from "react";
-import { Link } from "react-router";
-import ProductCard from "../../Components/Store/ProductCard"
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import ProductCard from "../../Components/Store/ProductCard";
 import "../../Components/Store/Store.css";
 import { useNavigate } from "react-router-dom";
-const products = [
-  {
-    id: 1,
-    name: "Weightlifting Belt",
-    category: "Equipment",
-    price: 79,
-    rating: 4.8,
-    image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80",
-  },
-  {
-    id: 2,
-    name: "Whey Protein 2kg",
-    category: "Supplements",
-    price: 59,
-    rating: 4.9,
-    image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=600&q=80",
-  },
-  {
-    id: 3,
-    name: "Creatine Monohydrate",
-    category: "Supplements",
-    price: 29,
-    rating: 4.8,
-    image: "https://images.unsplash.com/photo-1581009137042-c552e485697a?w=600&q=80",
-  },
-  {
-    id: 4,
-    name: "BCAA Powder",
-    category: "Supplements",
-    price: 35,
-    rating: 4.7,
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
-  },
-  {
-    id: 5,
-    name: "Resistance Bands",
-    category: "Equipment",
-    price: 24,
-    rating: 4.6,
-    image: "https://images.unsplash.com/photo-1581009137042-c552e485697a?w=600&q=80",
-  },
-  {
-    id: 6,
-    name: "Pre-Workout",
-    category: "Supplements",
-    price: 44,
-    rating: 4.8,
-    image: "https://images.unsplash.com/photo-1581009137042-c552e485697a?w=600&q=80",
-  },
-  {
-    id: 7,
-    name: "Gym Gloves",
-    category: "Equipment",
-    price: 19,
-    rating: 4.5,
-    image: "https://images.unsplash.com/photo-1581009137042-c552e485697a?w=600&q=80",
-  },
-  {
-    id: 8,
-    name: "Shaker Bottle",
-    category: "Accessories",
-    price: 15,
-    rating: 4.7,
-    image: "https://images.unsplash.com/photo-1544991875-5dc1b05f607d?w=600&q=80",
-  },
-];
 
-const categories = ["All", "Equipment", "Supplements", "Accessories"];
+const API_BASE = "http://localhost:5000";
 
 function Store() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [addingId, setAddingId] = useState(null);
+  const [notice, setNotice] = useState("");
+  const noticeTimer = useRef(null);
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        setLoading(true);
+        setError("");
+
+        const res = await fetch(`${API_BASE}/products`);
+        const data = await res.json();
+
+        if (!res.ok) throw new Error(data.message || "Failed to load products");
+
+        setProducts(Array.isArray(data) ? data : []);
+      } catch (err) {
+        setError(err.message || "Failed to load products");
+        setProducts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadProducts();
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (noticeTimer.current) {
+        clearTimeout(noticeTimer.current);
+      }
+    };
+  }, []);
+
+  const normalizedProducts = useMemo(() => {
+    return products.map((product) => {
+      const imageUrl = product.image
+        ? product.image.startsWith("http")
+          ? product.image
+          : `${API_BASE}${product.image}`
+        : "";
+
+      return {
+        ...product,
+        image: imageUrl,
+        category: product.category || "General"
+      };
+    });
+  }, [products]);
+
+  const categories = useMemo(() => {
+    const unique = new Set(
+      normalizedProducts
+        .map((product) => product.category)
+        .filter((category) => category && category !== "General")
+    );
+
+    return ["All", ...Array.from(unique)];
+  }, [normalizedProducts]);
 
   const filtered =
     activeCategory === "All"
-      ? products
-      : products.filter((p) => p.category === activeCategory);
-const navigate = useNavigate();
+      ? normalizedProducts
+      : normalizedProducts.filter((p) => p.category === activeCategory);
+
+  const navigate = useNavigate();
+
+  const handleAddToCart = async (productId) => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Please login to add items to cart.");
+      navigate("/login");
+      return;
+    }
+
+    setAddingId(productId);
+    try {
+      const res = await fetch(`${API_BASE}/carts/items`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ productId, quantity: 1 })
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "Failed to add to cart");
+
+      setNotice("Product added to cart.");
+      if (noticeTimer.current) {
+        clearTimeout(noticeTimer.current);
+      }
+      noticeTimer.current = setTimeout(() => {
+        setNotice("");
+      }, 2000);
+      window.dispatchEvent(new Event("cart:updated"));
+    } catch (err) {
+      alert(err.message || "Failed to add to cart");
+    } finally {
+      setAddingId(null);
+    }
+  };
   return (
     <>
  
@@ -105,27 +139,41 @@ const navigate = useNavigate();
         </div>
 
         
-        <div className="store-filter-bar">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              className={`filter-btn ${activeCategory === cat ? "active" : ""}`}
-              onClick={() => setActiveCategory(cat)}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
+        {categories.length > 1 && (
+          <div className="store-filter-bar">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                className={`filter-btn ${activeCategory === cat ? "active" : ""}`}
+                onClick={() => setActiveCategory(cat)}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {notice && <div className="store-alert">{notice}</div>}
 
         
         <div className="store-grid-wrapper">
           <div className="store-grid">
-            {filtered.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-              />
-            ))}
+            {loading && <p className="text-center text-secondary">Loading products...</p>}
+            {!loading && error && (
+              <p className="text-center text-danger">{error}</p>
+            )}
+            {!loading && !error && filtered.length === 0 && (
+              <p className="text-center text-secondary">No products found.</p>
+            )}
+            {!loading && !error &&
+              filtered.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  onAddToCart={handleAddToCart}
+                  isAdding={addingId === product.id}
+                />
+              ))}
           </div>
         </div>
       </div>
