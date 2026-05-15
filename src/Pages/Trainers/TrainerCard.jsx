@@ -1,43 +1,43 @@
 import React from "react";
 
-
-
-
 function TrainerCard({ trainer }) {
+  if (!trainer) return null;
 
   const handleBooking = async () => {
     try {
-
       const token = localStorage.getItem("token");
-         console.log(token);
-      const response = await fetch("http://localhost:5000/bookings", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
-        },
 
-        body: JSON.stringify({
-          trainerId: trainer.id,
+      const response = await fetch(
+        "http://localhost:5000/bookings",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type":
+              "application/json",
+            Authorization: `Bearer ${token}`,
+          },
 
-          bookingDate: new Date(),
+          body: JSON.stringify({
+            trainerId: trainer.id,
 
-          bookingTime: "10:00:00",
+          
 
-          status: "pending"
-        })
-      });
+            status: "pending",
+          }),
+        }
+      );
 
       const data = await response.json();
 
-      console.log(data);
-
       if (response.ok) {
-        alert("Booking created successfully");
+        alert(
+          "Booking created successfully"
+        );
       } else {
-        alert(data.message || "Booking failed");
+        alert(
+          data.message || "Booking failed"
+        );
       }
-
     } catch (err) {
       console.log(err);
       alert("Server error");
@@ -46,164 +46,173 @@ function TrainerCard({ trainer }) {
 
   return (
     <div
-      className="card mb-2"
+      className="p-3 h-100 w-100"
       style={{
-        maxWidth: "540px",
         backgroundColor: "#0b0b0b",
+        border:
+          "1px solid rgba(255,0,0,0.3)",
+        borderRadius: "18px",
         color: "#fff",
-        border: "1px solid rgba(220,53,69,0.3)",
-        borderRadius: "16px",
+        position: "relative",
         overflow: "hidden",
-        position: "relative"
+        minHeight: "430px",
       }}
     >
-      <div className="row g-0">
+     
+      <div
+        style={{
+          position: "absolute",
+          top: "15px",
+          right: "15px",
+          background: "#5b0000",
+          padding: "6px 12px",
+          borderRadius: "10px",
+          fontWeight: "bold",
+          color: "#ffd54f",
+        }}
+      >
+        ⭐ {trainer.rating || "4.8"}
+      </div>
 
-        <div className="col-md-4">
-          <img
-            src={trainer.image}
-            className="img-fluid h-100"
-            alt={trainer.name}
+      <div className="d-flex gap-3">
+     
+        <img
+          src={
+            trainer.image ||
+            "/images/default.jpg"
+          }
+          alt={trainer.name}
+          style={{
+            width: "170px",
+            height: "260px",
+            objectFit: "cover",
+            borderRadius: "14px",
+          }}
+        />
+
+   
+        <div className="flex-grow-1">
+          <h3
             style={{
-              objectFit: "cover"
+              fontWeight: "700",
+              marginBottom: "5px",
             }}
-          />
-        </div>
+          >
+            {trainer.name || "Trainer"}
+          </h3>
 
-        <div className="col-md-8">
+          <p
+            style={{
+              color: "#ff2b2b",
+              marginBottom: "12px",
+              fontSize: "0.95rem",
+            }}
+          >
+            {trainer.specialty ||
+              "Fitness Coach"}
+          </p>
 
-          <div className="card-body d-flex flex-column h-100">
+          <p
+            style={{
+              color: "#bdbdbd",
+              fontSize: "0.9rem",
+              lineHeight: "1.6",
+            }}
+          >
+            {trainer.description ||
+              "Professional trainer helping clients achieve fitness goals."}
+          </p>
 
-            <h5 className="fw-bold mb-1">{trainer.name}</h5>
-
-            <p
-              className="text-danger mb-2"
-              style={{
-                fontSize: "0.9rem",
-                color: "#ff0000",
-                fontFamily: "Barlow Condensed, sans-serif"
-              }}
-            >
-              {trainer.specialty}
-            </p>
-
-            <p
-              style={{
-                color: "#aaa",
-                fontSize: "0.85rem",
-                lineHeight: "1.5"
-              }}
-            >
-              {trainer.description}
-            </p>
-
-            <div className="d-flex gap-3 my-2">
-
-              <span
+          {/* Stats */}
+          <div className="d-flex gap-4 mt-3">
+            <div>
+              <h6
                 style={{
-                  fontSize: "0.8rem",
-                  color: "#fff"
+                  fontWeight: "bold",
                 }}
               >
-                <strong>{trainer.experience}</strong>
-                <br />
-                <span style={{ color: "#888" }}>Experience</span>
-              </span>
+                {trainer.experience ||
+                  "5+ years"}
+              </h6>
 
-              <span
-                style={{
-                  fontSize: "0.8rem",
-                  color: "#fff"
-                }}
+              <small
+                style={{ color: "#999" }}
               >
-                <strong>{trainer.clients}</strong>
-                <br />
-                <span style={{ color: "#888" }}>Clients</span>
-              </span>
-
+                Experience
+              </small>
             </div>
 
-            <p
-              className="mb-1 fw-bold"
-              style={{ fontSize: "0.85rem" }}
-            >
+            <div>
+              <h6
+                style={{
+                  fontWeight: "bold",
+                }}
+              >
+                {trainer.clients ||
+                  "100+ Clients"}
+              </h6>
+
+              <small
+                style={{ color: "#999" }}
+              >
+                Clients
+              </small>
+            </div>
+          </div>
+
+      
+          <div className="mt-3">
+            <p style={{ marginBottom: "8px" }}>
               Skills
             </p>
 
-            <div className="mb-3">
-
-              {trainer.skills.map((skill, index) => (
-
-                <span
-                  key={index}
-                  style={{
-                    border: "1px solid #ff0000",
-                    color: "#ff0000",
-                    fontSize: "0.75rem",
-                    padding: "4px 10px",
-                    borderRadius: "20px",
-                    marginRight: "6px",
-                    display: "inline-block",
-                    marginBottom: "6px"
-                  }}
-                >
-                  {skill}
-                </span>
-
-              ))}
-
-            </div>
-
-            <p
-              style={{
-                fontSize: "0.9rem",
-                color: "#ccc",
-                marginBottom: "8px",
-                letterSpacing: "0.5px"
-              }}
-            >
-              {trainer.availability}
-            </p>
-
-            <button
-              onClick={handleBooking}
-              style={{
-                background: "#ff0000",
-                border: "none",
-                borderRadius: "5px",
-                padding: "10px",
-                color: "#fff",
-                fontWeight: "500",
-                transition: "0.3s"
-              }}
-            >
-              Book Session
-            </button>
-
-            <div
-              style={{
-                position: "absolute",
-                top: "10px",
-                right: "10px",
-                background: "#500404",
-                color: "#fff",
-                padding: "4px 10px",
-                borderRadius: "5px",
-                fontSize: "0.8rem",
-                fontWeight: "bold",
-                display: "flex",
-                alignItems: "center",
-                gap: "5px"
-              }}
-            >
-              ⭐ {trainer.rating}
-            </div>
-
+            {(trainer.skills || [
+              "Fitness",
+              "Cardio",
+              "Training",
+            ]).map((s, i) => (
+              <span
+                key={i}
+                style={{
+                  border:
+                    "1px solid red",
+                  color: "#ff3b3b",
+                  padding:
+                    "4px 10px",
+                  borderRadius:
+                    "20px",
+                  marginRight:
+                    "8px",
+                  marginBottom:
+                    "8px",
+                  display:
+                    "inline-block",
+                  fontSize:
+                    "0.75rem",
+                }}
+              >
+                {s}
+              </span>
+            ))}
           </div>
 
+      
         </div>
-
       </div>
+
+      
+      <button
+        onClick={handleBooking}
+        className="btn btn-danger w-100 mt-3"
+        style={{
+          borderRadius: "10px",
+          padding: "12px",
+          fontWeight: "600",
+          fontSize: "1rem",
+        }}
+      >
+        Book Session
+      </button>
     </div>
   );
 }
