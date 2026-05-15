@@ -8,7 +8,6 @@ const API_BASE = "http://localhost:5000";
 export default function Profile() {
   const [profile, setProfile] = useState(null);
   const [nutrition, setNutrition] = useState(null);
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -27,9 +26,7 @@ export default function Profile() {
 
         const user = JSON.parse(userStr);
 
-        // =========================
         // GET USER PROFILE
-        // =========================
 
         const res = await fetch(`${API_BASE}/users/${user.id}`, {
           headers: {
@@ -52,64 +49,58 @@ export default function Profile() {
 
         setProfile(userData);
 
-        // =========================
         // GET NUTRITION DATA
-        // =========================
 
-        try {
-          const nutritionRes = await fetch(`${API_BASE}/nutrition/${user.id}`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          });
 
-          if (nutritionRes.ok) {
-            const nutritionData = await nutritionRes.json();
 
-            console.log("Nutrition Data:", nutritionData);
+        const emptyNutrition = {
+  calories: { current: 0, target: 2500 },
+  protein: { current: 0, target: 180 },
+  carbs: { current: 0, target: 300 },
+  fat: { current: 0, target: 80 },
+}; 
 
-            setNutrition({
-              calories: {
-                current: nutritionData.calories || 0,
-                target: 2500,
-              },
+       try {
+  const nutritionRes = await fetch(`${API_BASE}/nutrition/${user.id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
-              protein: {
-                current: nutritionData.protein || 0,
-                target: 180,
-              },
+  if (nutritionRes.ok) {
+    const nutritionData = await nutritionRes.json();
 
-              carbs: {
-                current: nutritionData.carbs || 0,
-                target: 300,
-              },
+    console.log("Nutrition Data:", nutritionData);
 
-              fat: {
-                current: nutritionData.fat || 0,
-                target: 80,
-              },
-            });
-          } else {
-            // fallback static data
-            setNutrition({
-              calories: { current: 1850, target: 2500 },
-              protein: { current: 120, target: 180 },
-              carbs: { current: 200, target: 300 },
-              fat: { current: 55, target: 80 },
-            });
-          }
-        } catch (err) {
-          console.log("Nutrition Error:", err);
+    setNutrition({
+      calories: {
+        current: nutritionData.calories || 0,
+        target: 2500,
+      },
 
-          // fallback static data
-          setNutrition({
-            calories: { current: 1850, target: 2500 },
-            protein: { current: 120, target: 180 },
-            carbs: { current: 200, target: 300 },
-            fat: { current: 55, target: 80 },
-          });
-        }
+      protein: {
+        current: nutritionData.protein || 0,
+        target: 180,
+      },
 
+      carbs: {
+        current: nutritionData.carbs || 0,
+        target: 300,
+      },
+
+      fat: {
+        current: nutritionData.fat || 0,
+        target: 80,
+      },
+    });
+  } else {
+    setNutrition(emptyNutrition);
+  }
+} catch (err) {
+  console.log("Nutrition Error:", err);
+
+  setNutrition(emptyNutrition);
+}
         setError(null);
       } catch (err) {
         console.error("Error fetching profile:", err);
@@ -123,9 +114,7 @@ export default function Profile() {
     fetchProfileData();
   }, []);
 
-  // =========================
   // LOGOUT
-  // =========================
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -134,9 +123,7 @@ export default function Profile() {
     window.location.href = "/login";
   };
 
-  // =========================
   // DELETE ACCOUNT
-  // =========================
 
   const handleDeleteAccount = async () => {
     const confirmDelete = window.confirm(
@@ -176,9 +163,7 @@ export default function Profile() {
     }
   };
 
-  // =========================
   // LOADING
-  // =========================
 
   if (loading) {
     return (
@@ -190,9 +175,7 @@ export default function Profile() {
     );
   }
 
-  // =========================
   // ERROR
-  // =========================
 
   if (error) {
     return (
@@ -209,9 +192,7 @@ export default function Profile() {
     );
   }
 
-  // =========================
   // BMI
-  // =========================
 
   const bmi =
     profile.height && profile.weight
