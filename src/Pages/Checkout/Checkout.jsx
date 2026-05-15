@@ -73,7 +73,7 @@ function Checkout() {
           shippingAddress: prev.shippingAddress || lastOrder.shippingAddress || ""
         }));
       } catch (err) {
-        // Ignore prefill errors silently.
+        
       }
     };
 

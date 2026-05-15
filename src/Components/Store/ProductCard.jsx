@@ -1,6 +1,6 @@
 import React from "react";
 
-function ProductCard({ product, onAddToCart, isAdding }) {
+function ProductCard({ product, onAddToCart, isAdding, isAdmin, onEdit, onDelete }) {
   const price = Number(product.price);
   const formattedPrice = Number.isFinite(price) ? price.toFixed(2) : product.price;
   const categoryLabel = product.category || "General";
@@ -34,6 +34,25 @@ function ProductCard({ product, onAddToCart, isAdding }) {
         >
             {isAdding ? "Adding..." : "Add To Cart"}
         </button>
+
+        {isAdmin && (
+          <div className="product-admin-actions">
+            <button
+              type="button"
+              className="btn-edit"
+              onClick={() => onEdit?.(product)}
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              className="btn-delete"
+              onClick={() => onDelete?.(product)}
+            >
+              Delete
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

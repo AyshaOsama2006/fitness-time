@@ -4,10 +4,13 @@ import "./AddProduct.css";
 
 const emptyForm = {
   name: "",
+  category: "Equipment",
   price: "",
   description: "",
   stock: ""
 };
+
+const CATEGORY_OPTIONS = ["Equipment", "Supplements", "Accessories"];
 
 const getStoredUser = () => {
   try {
@@ -67,8 +70,8 @@ function AddProduct() {
     setError("");
     setSuccess("");
 
-    if (!form.name || !form.price || !form.stock) {
-      setError("Please fill name, price, and stock.");
+    if (!form.name || !form.price || !form.stock || !form.category) {
+      setError("Please fill name, category, price, and stock.");
       return;
     }
 
@@ -81,6 +84,7 @@ function AddProduct() {
     try {
       const payload = new FormData();
       payload.append("name", form.name.trim());
+      payload.append("category", form.category);
       payload.append("price", String(form.price));
       payload.append("description", form.description.trim());
       payload.append("stock", String(form.stock));
@@ -172,6 +176,22 @@ function AddProduct() {
 
             <div className="form-row">
               <div className="form-group">
+                <label htmlFor="category">Category</label>
+                <select
+                  id="category"
+                  name="category"
+                  value={form.category}
+                  onChange={handleChange}
+                  required
+                >
+                  {CATEGORY_OPTIONS.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="form-group">
                 <label htmlFor="price">Price (USD)</label>
                 <input
                   id="price"
@@ -254,6 +274,7 @@ function AddProduct() {
           </div>
           <div className="preview-body">
             <h3>{form.name || "Product Name"}</h3>
+            <span className="preview-category">{form.category}</span>
             <p>{form.description || "Short description will appear here."}</p>
             <div className="preview-meta">
               <span>{previewPrice}</span>
