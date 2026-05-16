@@ -3,7 +3,7 @@ import ProductCard from "../../Components/Store/ProductCard";
 import "../../Components/Store/Store.css";
 import { useNavigate } from "react-router-dom";
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://fitness-time-backend-production.up.railway.app";
 const PRODUCT_CATEGORIES = ["Equipment", "Supplements", "Accessories"];
 const FILTER_CATEGORIES = ["All", ...PRODUCT_CATEGORIES];
 

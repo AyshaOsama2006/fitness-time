@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://fitness-time-backend-production.up.railway.app";
 
 export default function Profile() {
   const [profile, setProfile] = useState(null);

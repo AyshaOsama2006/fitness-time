@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import dumbbell from '../../assets/dumbbell.png'
 import '../Header/header.css'
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://fitness-time-backend-production.up.railway.app";
 
 function Header() {
   const location = useLocation();

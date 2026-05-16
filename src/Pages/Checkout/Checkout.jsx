@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Checkout.css";
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://fitness-time-backend-production.up.railway.app";
 
 const getImageUrl = (image) => {
   if (!image) return "";

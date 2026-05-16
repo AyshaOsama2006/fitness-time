@@ -34,7 +34,7 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/users/login", {
+      const res = await fetch("https://fitness-time-backend-production.up.railway.app/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -80,7 +80,7 @@ export default function Login() {
         fitnessGoal: e.target.fitnessGoal.value || null,
       };
 
-      const res = await fetch("http://localhost:5000/users", {
+      const res = await fetch("https://fitness-time-backend-production.up.railway.app/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

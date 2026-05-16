@@ -91,7 +91,7 @@ function AddProduct() {
       payload.append("image", imageFile);
 
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/products", {
+      const res = await fetch("https://fitness-time-backend-production.up.railway.app/products", {
         method: "POST",
         headers: {
           ...(token ? { Authorization: `Bearer ${token}` } : {})
