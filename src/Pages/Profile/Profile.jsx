@@ -247,10 +247,8 @@ export default function Profile() {
                 </h5>
 
                 <p className="member-text">
-                  {profile.fitnessGoal
-                    ? `${profile.fitnessGoal} Plan`
-                    : "Member"}
-                </p>
+  {profile.role || "User"}
+</p>
               </div>
 
               <ul className="list-group list-group-flush mt-3 gap-3">
