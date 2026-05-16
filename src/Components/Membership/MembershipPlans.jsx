@@ -2,6 +2,10 @@ import React from "react";
 import PlanCard from "./PlanCard";
 import "../../Pages/Membership/Membership.css";
 
+// الصور من public/images
+const monthlyImg = "/images/3.jpg";
+const annualImg = "/images/photo-2.jpg";
+const vipImg = "/images/photo-1.jpg";
 import monthlyImg from "../../assets/images/3.jpg";
 import annualImg from "../../assets/images/photo-2.jpg";
 import vipImg from "../../assets/images/photo-1.jpg";
@@ -31,6 +35,7 @@ function MembershipPlans() {
       period: "/year",
       image: annualImg,
       highlight: true,
+
       features: [
         { text: "Full gym access", available: true },
         { text: "Premium locker room", available: true },
@@ -46,6 +51,7 @@ function MembershipPlans() {
       price: "$149",
       period: "/month",
       image: vipImg,
+
       features: [
         { text: "24/7 VIP gym access", available: true },
         { text: "Private VIP lounge", available: true },
