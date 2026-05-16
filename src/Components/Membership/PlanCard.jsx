@@ -50,7 +50,7 @@ else if (title === "VIP") {
       console.log("SUCCESS:", res.data);
 setSubscriptionId(res.data.id);
 console.log("NEW SUB ID:", res.data.id);
-      alert("Selected!");
+      alert("Subscribed Successfully");
 
     } catch (err) {
 
@@ -81,7 +81,7 @@ const [subscriptionId, setSubscriptionId] = useState(null);
 
     console.log("DELETE SUCCESS:", res.data);
 
-    alert("Plan Deleted!");
+    alert("Subscription Deleted");
 
   } catch (err) {
 
@@ -140,7 +140,7 @@ const [subscriptionId, setSubscriptionId] = useState(null);
   className="btn-delete"
   onClick={handleDelete}
 >
-  DELETE PLAN
+  DELETE SUBSCRIPTION
 </button>
 
       </div>
