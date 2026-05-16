@@ -158,7 +158,7 @@ export default function Profile() {
       window.location.href = "/login";
     } catch (err) {
       console.error(err);
-
+ذ
       alert(err.message);
     }
   };
@@ -324,9 +324,16 @@ export default function Profile() {
                     <p className="stat-label">Current Weight</p>
 
                     <h2 className="stat-number">{profile.weight || "-"}kg</h2>
-
-                    <p className="success-text">Healthy Weight</p>
-                  </div>
+          <p className="success-text">
+  {bmi !== "N/A"
+    ? bmi < 18.5
+      ? "Underweight"
+      : bmi < 25
+        ? "Healthy Weight"
+        : "Overweight"
+    : "-"}
+</p>
+             </div>
                 </div>
 
                 <div className="col-md-4">
