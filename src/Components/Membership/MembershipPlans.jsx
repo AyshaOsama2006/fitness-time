@@ -6,9 +6,9 @@ import "../../Pages/Membership/Membership.css";
 const monthlyImg = "/images/3.jpg";
 const annualImg = "/images/photo-2.jpg";
 const vipImg = "/images/photo-1.jpg";
-import monthlyImg from "../../assets/images/3.jpg";
-import annualImg from "../../assets/images/photo-2.jpg";
-import vipImg from "../../assets/images/photo-1.jpg";
+//import monthlyImg from "../../assets/images/3.jpg";
+//import annualImg from "../../assets/images/photo-2.jpg";
+//import vipImg from "../../assets/images/photo-1.jpg";
 
 function MembershipPlans() {
 
