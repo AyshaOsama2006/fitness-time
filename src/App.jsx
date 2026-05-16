@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import MembershipPlans from "./components/Membership/MembershipPlans";
+import MembershipPlans from "./Components/Membership/MembershipPlans";
 import Login from './Pages/Login/Login'
 import Nutrition from "./Pages/Nutrition/NutritionComponents/Nutrition";
 import TrainersPage from './Pages/Trainers/TrainersPage'
@@ -10,7 +10,7 @@ import AddProduct from './Pages/Store/AddProduct'
 import Header from './Components/Header/Header'
 import Home from './Pages/Home/Home'
 import Footer from './Components/Footer/Footer'
-import BookingsPage from "./pages/Trainers/BookingsPage";
+import BookingsPage from "./Pages/Trainers/BookingsPage";
 import Cart from './Pages/Cart/Cart'
 import Checkout from './Pages/Checkout/Checkout'
 import AdminOrders from './Pages/Orders/AdminOrders'
