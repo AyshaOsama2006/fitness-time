@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./AdminOrders.css";
 
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://fitness-time-backend-production.up.railway.app";
 
 const getRoleFromToken = (token) => {
   if (!token) return null;

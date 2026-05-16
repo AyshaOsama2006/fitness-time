@@ -8,7 +8,7 @@ function TrainerCard({ trainer }) {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/bookings",
+        "https://fitness-time-backend-production.up.railway.app/bookings",
         {
           method: "POST",
           headers: {

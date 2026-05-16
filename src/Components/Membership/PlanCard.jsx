@@ -36,7 +36,7 @@ else if (title === "VIP") {
   statusValue = "vip-active";
 }
       const res = await axios.post(
-        "http://localhost:5000/api/subscriptions",
+        "https://fitness-time-backend-production.up.railway.app/api/subscriptions",
         {
           userId: 1,
           membershipId: id,
@@ -76,7 +76,7 @@ const [subscriptionId, setSubscriptionId] = useState(null);
     console.log("SENDING DELETE REQUEST");
 
     const res = await axios.delete(
-      `http://localhost:5000/api/subscriptions/${subscriptionId}`
+      `https://fitness-time-backend-production.up.railway.app/api/subscriptions/${subscriptionId}`
     );
 
     console.log("DELETE SUCCESS:", res.data);

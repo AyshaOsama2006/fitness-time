@@ -21,7 +21,7 @@ export default function Nutrition() {
   const handleGenerateMeals = async () => {
     if (!mealData.goal) return alert("Please select a goal");
     try {
-      const res = await axios.post('http://localhost:5000/api/nutrition/meal-plan', { goal: mealData.goal });
+      const res = await axios.post('https://fitness-time-backend-production.up.railway.app/api/nutrition/meal-plan', { goal: mealData.goal });
       setMealResult(res.data);
     } catch (e) { console.error(e); }
   };
@@ -37,7 +37,7 @@ export default function Nutrition() {
   const handleAnalyzeCalories = async () => {
     if (!calorieData.description && !calorieData.image) return alert("Enter text or upload image");
     try {
-      const res = await axios.post('http://localhost:5000/api/nutrition/calculate', personalData); // Mocking with similar logic
+      const res = await axios.post('https://fitness-time-backend-production.up.railway.app/api/nutrition/calculate', personalData); // Mocking with similar logic
       // Mocking specific calorie analysis result
       setCalorieResult({ 
         calories: Math.floor(Math.random() * 500) + 400, 
@@ -51,7 +51,7 @@ export default function Nutrition() {
   // 3. Personal Calculator
   const handlePersonalCalc = async () => {
     try {
-      const res = await axios.post('http://localhost:5000/api/nutrition/calculate', personalData);
+      const res = await axios.post('https://fitness-time-backend-production.up.railway.app/api/nutrition/calculate', personalData);
       setPersonalResult(res.data);
     } catch (e) { console.error(e); }
   };

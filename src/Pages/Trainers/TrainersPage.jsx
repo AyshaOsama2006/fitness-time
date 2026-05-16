@@ -66,7 +66,7 @@ function TrainersPage() {
   useEffect(() => {
     const fetchTrainers = async () => {
       try {
-        const res = await fetch("http://localhost:5000/trainers");
+        const res = await fetch("https://fitness-time-backend-production.up.railway.app/trainers");
         const data = await res.json();
         const updatedData = data.map((trainer) => ({
           ...trainer,

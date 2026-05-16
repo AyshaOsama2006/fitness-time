@@ -10,7 +10,7 @@ function BookingsPage() {
       const token = localStorage.getItem("token");
 
       const res = await fetch(
-        "http://localhost:5000/bookings",
+        "https://fitness-time-backend-production.up.railway.app/bookings",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -40,7 +40,7 @@ function BookingsPage() {
       const token = localStorage.getItem("token");
 
       const res = await fetch(
-        `http://localhost:5000/bookings/${id}`,
+        `https://fitness-time-backend-production.up.railway.app/bookings/${id}`,
         {
           method: "DELETE",
           headers: {

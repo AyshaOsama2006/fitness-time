@@ -10,7 +10,7 @@ export const ACTIVITIES = ['sedentary', 'light', 'moderate', 'active'];
 export const GOAL_TYPES = ['lose', 'maintain', 'gain'];
 
 export const API_URLS = {
-  meals: 'http://localhost:5000/api/nutrition/meal-plan',
-  calc: 'http://localhost:5000/api/nutrition/calculate',
-   calorie: 'http://localhost:5000/api/nutrition/calorie'
+  meals: 'https://fitness-time-backend-production.up.railway.app/api/nutrition/meal-plan',
+  calc: 'https://fitness-time-backend-production.up.railway.app/api/nutrition/calculate',
+   calorie: 'https://fitness-time-backend-production.up.railway.app/api/nutrition/calorie'
 };
